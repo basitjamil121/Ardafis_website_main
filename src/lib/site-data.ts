@@ -1,0 +1,200 @@
+export const siteConfig = {
+  name: "Ardafis Partners",
+  tagline: "Your Outsourced Accounts & Finance Team, Built on Precision",
+  description:
+    "Ardafis Partners provides outsourced bookkeeping, payroll, and tax-prep support to US CPA firms and solo practitioners — ACCA-qualified, software-fluent, and built to scale with your busy season.",
+  email: "contact@ardafispartners.com",
+};
+
+export type NavLink = { label: string; href: string };
+
+export const navLinks: NavLink[] = [
+  { label: "Services", href: "/services" },
+  { label: "How It Works", href: "/how-it-works" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "About", href: "/about" },
+  { label: "Security", href: "/security" },
+  { label: "Contact", href: "/contact" },
+];
+
+export type Service = {
+  slug: string;
+  title: string;
+  shortDesc: string;
+  heroDesc: string;
+  keywords: string;
+  bullets: string[];
+  software: string[];
+};
+
+export const services: Service[] = [
+  {
+    slug: "bookkeeping",
+    title: "Bookkeeping & Cleanup",
+    shortDesc:
+      "Historical books cleanup, monthly bookkeeping, and bank & credit card reconciliation.",
+    heroDesc:
+      "Outsourced bookkeeping for US CPA firms and their small-business clients — from monthly maintenance to full historical cleanup and platform migration.",
+    keywords: "outsourced bookkeeping for CPA firms, offshore bookkeeper, QuickBooks cleanup service",
+    bullets: [
+      "Monthly bookkeeping and general ledger maintenance",
+      "Bank, credit card, and merchant account reconciliation",
+      "Historical books cleanup and catch-up bookkeeping",
+      "Migration between QuickBooks, Xero, Sage, and Odoo",
+      "Chart of accounts setup and cleanup",
+    ],
+    software: ["QuickBooks Online", "QuickBooks Desktop", "Xero", "Sage", "Odoo"],
+  },
+  {
+    slug: "payables-receivables",
+    title: "Payables & Receivables",
+    shortDesc: "AP/AR management, vendor bill processing, invoicing, and collections.",
+    heroDesc:
+      "Keep cash moving without adding headcount — we manage the day-to-day accounts payable and receivable workflow so your team can focus on client relationships.",
+    keywords: "outsourced accounts payable, accounts receivable management, invoice processing service",
+    bullets: [
+      "Vendor bill entry, coding, and approval routing",
+      "Invoice generation and client billing",
+      "Collections follow-up and aging report management",
+      "Vendor and customer statement reconciliation",
+    ],
+    software: ["QuickBooks Online", "Bill.com", "Xero", "Odoo"],
+  },
+  {
+    slug: "payroll",
+    title: "Payroll Processing",
+    shortDesc: "Payroll processing and payslips via Gusto, Zoho Payroll, or your existing platform.",
+    heroDesc:
+      "Accurate, on-time payroll processing for your clients' teams — we work inside the payroll platform you already use.",
+    keywords: "outsourced payroll processing, payroll support for CPA firms",
+    bullets: [
+      "Bi-weekly, semi-monthly, and monthly payroll runs",
+      "New hire and termination processing",
+      "Payslip generation and distribution",
+      "Payroll tax filing support in coordination with your firm",
+    ],
+    software: ["Gusto", "Zoho Payroll", "QuickBooks Payroll", "ADP"],
+  },
+  {
+    slug: "tax-preparation",
+    title: "Tax Prep Support",
+    shortDesc:
+      "Return preparation support for CPA firms during busy season — you file, we handle the workload.",
+    heroDesc:
+      "A dependable extra set of hands during tax season — we prepare returns to your firm's standards so you can take on more clients without burning out your staff.",
+    keywords: "outsourced tax preparation for CPA firms, offshore tax preparer, 1040 outsourcing",
+    bullets: [
+      "Individual return preparation (Form 1040 and schedules)",
+      "Business return preparation support (1120S, 1065)",
+      "Source document organization and workpaper preparation",
+      "Review-ready files handed back to your reviewing CPA",
+    ],
+    software: ["Drake Tax", "UltraTax", "Lacerte", "ProSeries"],
+  },
+  {
+    slug: "advisory-reporting",
+    title: "Advisory & Reporting",
+    shortDesc: "Month-end close, management reports, KPI dashboards, and cash-flow forecasting.",
+    heroDesc:
+      "Beyond the books — management reporting and cash-flow visibility that helps your clients (and your firm) make better decisions.",
+    keywords: "outsourced controller services, virtual CFO support, management reporting outsourcing",
+    bullets: [
+      "Month-end close checklists and reporting packages",
+      "KPI dashboards tailored to the client's industry",
+      "Cash-flow forecasting and budget-to-actual analysis",
+      "Board-ready and investor-ready financial packages",
+    ],
+    software: ["QuickBooks Online", "Xero", "Google Sheets", "Excel"],
+  },
+  {
+    slug: "ecommerce-accounting",
+    title: "Ecommerce Accounting",
+    shortDesc: "Multi-channel reconciliation, inventory & COGS tracking, and marketplace settlement matching.",
+    heroDesc:
+      "Ecommerce books get messy fast — multiple channels, settlement delays, and inventory that never quite matches. This is where our team's automation background pays off.",
+    keywords: "ecommerce bookkeeping service, Shopify Amazon accounting, marketplace settlement reconciliation",
+    bullets: [
+      "Multi-channel sales reconciliation (Shopify, Amazon, Etsy, Walmart)",
+      "Inventory and cost-of-goods-sold tracking",
+      "Marketplace settlement and payout matching",
+      "Sales tax mapping support across channels",
+    ],
+    software: ["Shopify", "A2X", "QuickBooks Online", "Xero"],
+  },
+];
+
+export const trustStats = [
+  { value: "10+", label: "Years Combined Industry Experience" },
+  { value: "100%", label: "ACCA-Qualified Team" },
+  { value: "5+", label: "Accounting Platforms Supported" },
+  { value: "1", label: "Business Day Response Time" },
+];
+
+export type Industry = {
+  title: string;
+  desc: string;
+};
+
+export const industries: Industry[] = [
+  {
+    title: "Real Estate",
+    desc: "Property management accounting, rent-roll reconciliation, and owner reporting for real estate clients your firm serves.",
+  },
+  {
+    title: "Ecommerce & Retail",
+    desc: "Multi-channel sales, inventory, and settlement reconciliation for online and brick-and-mortar retail clients.",
+  },
+  {
+    title: "Freelancers & Gig Economy",
+    desc: "Simplified bookkeeping and quarterly-estimate-ready records for 1099 and self-employed clients.",
+  },
+  {
+    title: "Small Business & SME",
+    desc: "Full-cycle bookkeeping and advisory support for the small and mid-sized businesses that make up most of your client base.",
+  },
+];
+
+export const processSteps = [
+  {
+    step: "01",
+    title: "Discovery call",
+    desc: "We learn your firm's workflow, software stack, and where the workload is heaviest — no obligation.",
+  },
+  {
+    step: "02",
+    title: "Scope & pricing",
+    desc: "We agree on per-client, hourly, or per-return pricing based on the actual work, not a fixed package you don't need.",
+  },
+  {
+    step: "03",
+    title: "Secure onboarding",
+    desc: "Access is granted client-by-client under NDA, using the accounting and tax software you already run.",
+  },
+  {
+    step: "04",
+    title: "Ongoing delivery",
+    desc: "Work is completed on your schedule with a direct line to the partner overseeing your account — not a rotating queue.",
+  },
+];
+
+export const pricingTiers = [
+  {
+    name: "Per-Client Bookkeeping",
+    price: "$180–$350",
+    unit: "/ month",
+    desc: "Flat monthly bookkeeping for one of your clients — you keep the relationship, we do the work.",
+  },
+  {
+    name: "Hourly Support",
+    price: "$12–$22",
+    unit: "/ hour",
+    desc: "Flexible hourly bookkeeping ($12–$18) or tax prep & review ($18–$22) for overflow work.",
+    highlight: true,
+  },
+  {
+    name: "Per-Return (Tax Season)",
+    price: "$35–$220",
+    unit: "/ return",
+    desc: "Simple individual returns from $35, business returns (1120S/1065) from $120.",
+  },
+];

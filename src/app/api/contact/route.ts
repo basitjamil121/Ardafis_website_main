@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  let body: { name?: string; email?: string; firm?: string; message?: string };
+  let body: { name?: string; email?: string; firm?: string; message?: string; type?: string };
 
   try {
     body = await request.json();
@@ -9,7 +9,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const { name, email, firm, message } = body;
+  const { name, email, firm, message, type } = body;
+  const isCallback = type === "callback";
 
   if (!name || !email || !message) {
     return NextResponse.json(
@@ -51,7 +52,7 @@ export async function POST(request: Request) {
         from: "Ardafis Partners Website <onboarding@resend.dev>",
         to: [toEmail],
         reply_to: email,
-        subject: `New website inquiry from ${name}${firm ? ` (${firm})` : ""}`,
+        subject: `${isCallback ? "New callback request" : "New website inquiry"} from ${name}${firm ? ` (${firm})` : ""}`,
         text: `Name: ${name}\nEmail: ${email}\nFirm: ${firm ?? "—"}\n\nMessage:\n${message}`,
       }),
     });

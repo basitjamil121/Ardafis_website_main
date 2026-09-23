@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Ardafis Partners",
   tagline: "Your Outsourced Accounts & Finance Team, Built on Precision",
   description:
-    "Ardafis Partners provides outsourced bookkeeping, payroll, and tax-prep support to US CPA firms and solo practitioners — ACCA-qualified, software-fluent, and built to scale with your busy season.",
+    "Ardafis Partners provides outsourced bookkeeping, payroll, and tax-prep support to US CPA firms and solo practitioners — ACCA-qualified, QuickBooks & Xero Certified, and built to scale with your busy season.",
   email: "contact@ardafispartners.com",
 };
 
@@ -127,7 +127,7 @@ export const services: Service[] = [
 export const trustStats = [
   { value: "10+", label: "Years Combined Industry Experience" },
   { value: "100%", label: "ACCA-Qualified Team" },
-  { value: "5+", label: "Accounting Platforms Supported" },
+  { value: "QB & Xero", label: "Certified Team" },
   { value: "1", label: "Business Day Response Time" },
 ];
 

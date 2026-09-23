@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Ardafis Partners",
   },
   description:
-    "Ardafis Partners provides outsourced bookkeeping, payroll, and tax-prep support to US CPA firms and solo practitioners. ACCA-qualified, QuickBooks & Xero fluent, built to scale with busy season.",
+    "Ardafis Partners provides outsourced bookkeeping, payroll, and tax-prep support to US CPA firms and solo practitioners. ACCA-qualified, QuickBooks & Xero Certified, built to scale with busy season.",
   keywords: [
     "outsourced bookkeeping for CPA firms",
     "offshore accounting support USA",

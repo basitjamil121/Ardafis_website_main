@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ardafis Partners — Website
 
-## Getting Started
+The marketing site for Ardafis Partners, built with Next.js, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## Local development
 
 ```bash
+npm install
+cp .env.example .env.local   # already done in this repo; edit values as needed
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+See `.env.example` for the full list. None are required to run the site locally —
+the contact form works without them (it just logs submissions instead of emailing them).
 
-## Learn More
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | No | Used for metadata/canonical links. Defaults to `https://ardafispartners.com` if unset. |
+| `RESEND_API_KEY` | No | Enables the contact form to actually send email via [Resend](https://resend.com). |
+| `CONTACT_EMAIL_TO` | No | Destination inbox for contact form submissions. |
 
-To learn more about Next.js, take a look at the following resources:
+## Deploying — GitHub + Vercel (hobby project)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Push this repo to GitHub:**
+   ```bash
+   git remote add origin https://github.com/<your-username>/<repo-name>.git
+   git branch -M main
+   git push -u origin main
+   ```
+2. **Import into Vercel:**
+   - Go to [vercel.com/new](https://vercel.com/new) and sign in with GitHub.
+   - Select this repository. Vercel auto-detects Next.js — no build settings need to change.
+3. **Add environment variables in Vercel** (Project Settings → Environment Variables), if you want the contact form to send real emails:
+   - `NEXT_PUBLIC_SITE_URL` → your production domain (e.g. `https://ardafispartners.com`)
+   - `RESEND_API_KEY` → your Resend API key
+   - `CONTACT_EMAIL_TO` → the inbox that should receive inquiries
+4. **Deploy.** Vercel builds and gives you a `*.vercel.app` URL immediately.
+5. **Connect your own domain** (optional): Project Settings → Domains → add `ardafispartners.com`, then update your domain's DNS records as Vercel instructs.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Every push to `main` redeploys automatically once connected.

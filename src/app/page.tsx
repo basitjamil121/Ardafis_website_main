@@ -1,5 +1,6 @@
 import Link from "next/link";
 import StatsBar from "@/components/StatsBar";
+import CredentialBadges from "@/components/CredentialBadges";
 import CostComparison from "@/components/CostComparison";
 import IndustriesSection from "@/components/IndustriesSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
@@ -44,6 +45,7 @@ export default function Home() {
         </div>
       </section>
 
+      <CredentialBadges />
       <StatsBar />
 
       {/* Services */}

@@ -127,7 +127,7 @@ export const services: Service[] = [
 export const trustStats = [
   { value: "10+", label: "Years Combined Industry Experience" },
   { value: "100%", label: "ACCA-Qualified Team" },
-  { value: "QB & Xero", label: "Certified Team" },
+  { value: "5+", label: "Accounting Platforms Supported" },
   { value: "1", label: "Business Day Response Time" },
 ];
 

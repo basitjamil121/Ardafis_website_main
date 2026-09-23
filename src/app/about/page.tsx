@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import StatsBar from "@/components/StatsBar";
+import CredentialBadges from "@/components/CredentialBadges";
 import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
@@ -44,7 +45,7 @@ export default function AboutPage() {
           {team.map((member) => (
             <div key={member.name} className="rounded-lg border border-line bg-white p-6">
               <h3 className="font-display text-lg font-semibold text-deep-green">
-                {member.name}
+                {member.name}, ACCA
               </h3>
               <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-sage">
                 {member.role}
@@ -54,6 +55,8 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
+
+      <CredentialBadges />
 
       <section className="border-t border-line bg-white">
         <div className="mx-auto max-w-4xl px-6 py-20">

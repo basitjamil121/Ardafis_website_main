@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logo from "@/components/Logo";
+import CredentialBadges from "@/components/CredentialBadges";
 import { navLinks, siteConfig } from "@/lib/site-data";
 
 export default function Footer() {
@@ -12,6 +13,9 @@ export default function Footer() {
             Outsourced bookkeeping, payroll, and tax-prep support for US CPA
             firms and solo practitioners.
           </p>
+          <div className="mt-5">
+            <CredentialBadges compact />
+          </div>
         </div>
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">

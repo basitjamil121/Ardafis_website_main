@@ -157,6 +157,23 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Global reach strip */}
+      <section className="border-b border-line bg-cream">
+        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-6 py-10 md:flex-row md:items-center">
+          <p className="text-sm text-ink/70">
+            <strong className="text-deep-green">Now expanding globally</strong> — alongside our
+            work with US CPA firms, we're extending outsourced accounting support to
+            real estate, retail, freelance, and SME clients across the Gulf region.
+          </p>
+          <Link
+            href="/global-reach"
+            className="shrink-0 text-sm font-semibold text-deep-green hover:underline"
+          >
+            See Gulf region services &rarr;
+          </Link>
+        </div>
+      </section>
+
       <CTASection />
     </>
   );

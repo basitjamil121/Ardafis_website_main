@@ -12,6 +12,7 @@ export const navLinks: NavLink[] = [
   { label: "Services", href: "/services" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Pricing", href: "/pricing" },
+  { label: "Insights", href: "/insights" },
   { label: "About", href: "/about" },
   { label: "Security", href: "/security" },
   { label: "Contact", href: "/contact" },
@@ -174,6 +175,37 @@ export const processSteps = [
     step: "04",
     title: "Ongoing delivery",
     desc: "Work is completed on your schedule with a direct line to the partner overseeing your account — not a rotating queue.",
+  },
+];
+
+export type Insight = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+};
+
+export const insights: Insight[] = [
+  {
+    slug: "cost-of-outsourced-bookkeeping-for-cpa-firms",
+    title: "What Outsourced Bookkeeping Actually Costs a CPA Firm",
+    excerpt:
+      "A breakdown of per-client, hourly, and per-return pricing models — and how to tell which one fits your firm's workload.",
+    date: "2026-09-24",
+  },
+  {
+    slug: "quickbooks-vs-xero-vs-sage-outsourcing",
+    title: "QuickBooks vs. Xero vs. Sage: What Matters When You're Outsourcing",
+    excerpt:
+      "The platform your firm already uses usually matters more than which one is 'best' — here's how to think about it.",
+    date: "2026-09-24",
+  },
+  {
+    slug: "tax-season-overflow-without-hiring",
+    title: "Handling Tax Season Overflow Without a Seasonal Hire",
+    excerpt:
+      "Seasonal staff are expensive to train and hard to retain. Here's how firms cover the busy-season spike without it.",
+    date: "2026-09-24",
   },
 ];
 

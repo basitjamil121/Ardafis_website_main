@@ -38,6 +38,11 @@ export default function Footer() {
               </a>
             </li>
             <li>Response within 1 business day</li>
+            <li>
+              <Link href="/global-reach" className="hover:text-deep-green">
+                Gulf region services &rarr;
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

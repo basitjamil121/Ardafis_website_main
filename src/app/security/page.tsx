@@ -70,7 +70,7 @@ export default function SecurityPage() {
           <ComplianceNote />
         </div>
 
-        <div className="mt-10 rounded-lg border border-line bg-cream p-6">
+        <div className="mt-10 rounded-lg border border-line bg-cream p-6 shadow-sm">
           <h2 className="font-display text-lg font-semibold text-deep-green">
             What we're working toward
           </h2>

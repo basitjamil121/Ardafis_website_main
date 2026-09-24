@@ -16,7 +16,7 @@ export default function HowItWorksSection({ compact = false }: HowItWorksSection
         </h2>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((s) => (
-            <div key={s.step} className="rounded-lg border border-line bg-cream p-6">
+            <div key={s.step} className="rounded-lg border border-line bg-cream p-6 shadow-sm">
               <p className="font-display text-3xl font-bold text-sage">{s.step}</p>
               <h3 className="mt-3 font-display text-lg font-semibold text-deep-green">
                 {s.title}

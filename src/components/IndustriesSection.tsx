@@ -16,7 +16,7 @@ export default function IndustriesSection() {
         </p>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {industries.map((ind) => (
-            <div key={ind.title} className="rounded-lg border border-line bg-cream p-6">
+            <div key={ind.title} className="rounded-lg border border-line bg-cream p-6 shadow-sm">
               <h3 className="font-display text-lg font-semibold text-deep-green">
                 {ind.title}
               </h3>

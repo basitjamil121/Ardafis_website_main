@@ -4,6 +4,7 @@ import Link from "next/link";
 import CTASection from "@/components/CTASection";
 import ComplianceNote from "@/components/ComplianceNote";
 import ServiceIcon from "@/components/ServiceIcon";
+import BrandMotif from "@/components/BrandMotif";
 import { services } from "@/lib/site-data";
 
 export function generateStaticParams() {
@@ -36,8 +37,9 @@ export default async function ServiceDetailPage({
 
   return (
     <>
-      <section className="border-b border-line bg-white">
-        <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <section className="relative overflow-hidden border-b border-line bg-gradient-to-br from-white via-white to-cream">
+        <BrandMotif className="pointer-events-none absolute -right-24 -top-32 h-[420px] w-[420px] md:-right-12 md:-top-40 md:h-[520px] md:w-[520px]" />
+        <div className="relative mx-auto max-w-6xl px-6 py-16 md:py-20">
           <Link href="/services" className="text-sm font-semibold text-sage hover:text-deep-green">
             &larr; All services
           </Link>
@@ -72,7 +74,7 @@ export default async function ServiceDetailPage({
               </h2>
               <div className="mt-6 flex flex-col gap-4">
                 {service.tiers.map((tier, i) => (
-                  <div key={tier.name} className="rounded-lg border border-line bg-cream p-6">
+                  <div key={tier.name} className="rounded-lg border border-line bg-cream p-6 shadow-sm">
                     <div className="flex items-center gap-3">
                       <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-deep-green text-xs font-bold text-white">
                         {i + 1}
@@ -101,7 +103,7 @@ export default async function ServiceDetailPage({
           )}
         </div>
         <div>
-          <div className="rounded-lg border border-line bg-cream p-6">
+          <div className="rounded-lg border border-line bg-cream p-6 shadow-sm">
             <h3 className="font-display text-lg font-semibold text-deep-green">
               Platforms we use
             </h3>

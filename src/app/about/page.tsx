@@ -43,7 +43,7 @@ export default function AboutPage() {
         <h2 className="font-display text-2xl font-bold text-deep-green">Leadership</h2>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {team.map((member) => (
-            <div key={member.name} className="rounded-lg border border-line bg-white p-6">
+            <div key={member.name} className="rounded-lg border border-line bg-white p-6 shadow-sm">
               <h3 className="font-display text-lg font-semibold text-deep-green">
                 {member.name}, ACCA
               </h3>

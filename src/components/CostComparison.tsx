@@ -35,7 +35,7 @@ export default function CostComparison() {
           General US market figures for illustration — your actual savings
           depend on workload and current staffing.
         </p>
-        <div className="mt-10 overflow-hidden rounded-lg border border-line bg-white">
+        <div className="mt-10 overflow-hidden rounded-lg border border-line bg-white shadow-sm">
           <div className="grid grid-cols-3 border-b border-line bg-deep-green text-white">
             <div className="px-5 py-3 text-sm font-semibold">Factor</div>
             <div className="px-5 py-3 text-sm font-semibold">In-House Hire</div>

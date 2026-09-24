@@ -29,7 +29,7 @@ export default function ServicesPage() {
             <Link
               key={s.slug}
               href={`/services/${s.slug}`}
-              className="rounded-lg border border-line bg-white p-6 transition hover:border-deep-green"
+              className="rounded-lg border border-line bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-deep-green hover:shadow-md"
             >
               <div className="flex items-center justify-between">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-deep-green/10 text-deep-green">

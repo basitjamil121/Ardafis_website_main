@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BrandMotif from "@/components/BrandMotif";
 
 type CTASectionProps = {
   title?: string;
@@ -10,8 +11,12 @@ export default function CTASection({
   desc = "Tell us about your firm and where you need support — we'll follow up within one business day.",
 }: CTASectionProps) {
   return (
-    <section className="border-t border-line bg-deep-green">
-      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-6 py-14 md:flex-row md:items-center">
+    <section className="relative overflow-hidden border-t border-line bg-gradient-to-br from-deep-green to-[#132A20]">
+      <BrandMotif
+        variant="light"
+        className="pointer-events-none absolute -right-20 -top-20 h-[380px] w-[380px] md:-right-8 md:-top-24 md:h-[460px] md:w-[460px]"
+      />
+      <div className="relative mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-6 py-14 md:flex-row md:items-center">
         <div>
           <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
             {title}
@@ -21,7 +26,7 @@ export default function CTASection({
         <div className="flex shrink-0 flex-wrap gap-3">
           <Link
             href="/contact"
-            className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-deep-green transition hover:bg-white/90"
+            className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-deep-green shadow-sm transition hover:bg-white/90"
           >
             Start a conversation
           </Link>

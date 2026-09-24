@@ -61,7 +61,7 @@ export default function ContactForm({ variant = "inquiry" }: { variant?: Variant
 
   if (status === "sent") {
     return (
-      <div className="rounded-lg border border-line bg-white p-6 text-center">
+      <div className="rounded-lg border border-line bg-white p-6 text-center shadow-sm">
         <p className="font-display text-lg font-semibold text-deep-green">
           Thank you — your message has been received.
         </p>

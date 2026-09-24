@@ -49,7 +49,7 @@ export default function CredentialBadges({ compact = false }: CredentialBadgesPr
           {credentials.map((c) => (
             <div
               key={c.label}
-              className="flex items-center gap-4 rounded-lg border border-line bg-cream px-6 py-5"
+              className="flex items-center gap-4 rounded-lg border border-line bg-cream px-6 py-5 shadow-sm"
             >
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-deep-green/10 text-deep-green">
                 <SealIcon />

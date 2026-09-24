@@ -63,9 +63,9 @@ export default function PricingPage() {
             {pricingTiers.map((p) => (
               <div
                 key={p.name}
-                className={`rounded-lg border p-6 ${
+                className={`rounded-lg border p-6 shadow-sm ${
                   p.highlight
-                    ? "border-deep-green bg-deep-green text-white"
+                    ? "border-deep-green bg-deep-green text-white shadow-md"
                     : "border-line bg-cream text-ink"
                 }`}
               >

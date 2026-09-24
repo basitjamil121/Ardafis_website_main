@@ -1,3 +1,5 @@
+import BrandMotif from "@/components/BrandMotif";
+
 type PageHeroProps = {
   eyebrow: string;
   title: string;
@@ -6,8 +8,9 @@ type PageHeroProps = {
 
 export default function PageHero({ eyebrow, title, desc }: PageHeroProps) {
   return (
-    <section className="border-b border-line bg-white">
-      <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+    <section className="relative overflow-hidden border-b border-line bg-gradient-to-br from-white via-white to-cream">
+      <BrandMotif className="pointer-events-none absolute -right-24 -top-32 h-[420px] w-[420px] md:-right-12 md:-top-40 md:h-[520px] md:w-[520px]" />
+      <div className="relative mx-auto max-w-6xl px-6 py-16 md:py-20">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">
           {eyebrow}
         </p>

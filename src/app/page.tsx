@@ -8,14 +8,16 @@ import SoftwareBadges from "@/components/SoftwareBadges";
 import CTASection from "@/components/CTASection";
 import ComplianceNote from "@/components/ComplianceNote";
 import ServiceIcon from "@/components/ServiceIcon";
+import BrandMotif from "@/components/BrandMotif";
 import { servicesByCategory, pricingTiers } from "@/lib/site-data";
 
 export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="border-b border-line bg-white">
-        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+      <section className="relative overflow-hidden border-b border-line bg-gradient-to-br from-white via-white to-cream">
+        <BrandMotif className="pointer-events-none absolute -right-24 -top-24 h-[500px] w-[500px] md:-right-16 md:-top-32 md:h-[650px] md:w-[650px]" />
+        <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">
             Outsourced Accounting for US CPA Firms
           </p>
@@ -75,7 +77,7 @@ export default function Home() {
               <Link
                 key={s.slug}
                 href={`/services/${s.slug}`}
-                className="rounded-lg border border-line bg-cream p-6 transition hover:border-deep-green"
+                className="rounded-lg border border-line bg-cream p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-deep-green hover:shadow-md"
               >
                 <div className="flex items-center justify-between">
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-deep-green/10 text-deep-green">
@@ -124,9 +126,9 @@ export default function Home() {
             {pricingTiers.map((p) => (
               <div
                 key={p.name}
-                className={`rounded-lg border p-6 ${
+                className={`rounded-lg border p-6 shadow-sm ${
                   p.highlight
-                    ? "border-deep-green bg-deep-green text-white"
+                    ? "border-deep-green bg-deep-green text-white shadow-md"
                     : "border-line bg-white text-ink"
                 }`}
               >

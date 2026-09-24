@@ -8,7 +8,7 @@ import SoftwareBadges from "@/components/SoftwareBadges";
 import CTASection from "@/components/CTASection";
 import ComplianceNote from "@/components/ComplianceNote";
 import ServiceIcon from "@/components/ServiceIcon";
-import { services, pricingTiers, serviceCategoryOrder } from "@/lib/site-data";
+import { servicesByCategory, pricingTiers } from "@/lib/site-data";
 
 export default function Home() {
   return (
@@ -70,35 +70,31 @@ export default function Home() {
             full workload.
           </p>
 
-          {serviceCategoryOrder.map((category) => (
-            <div key={category} className="mt-12 first:mt-10">
-              <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
-                {category}
-              </h3>
-              <div className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {services
-                  .filter((s) => s.category === category)
-                  .map((s) => (
-                    <Link
-                      key={s.slug}
-                      href={`/services/${s.slug}`}
-                      className="rounded-lg border border-line bg-cream p-6 transition hover:border-deep-green"
-                    >
-                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-deep-green/10 text-deep-green">
-                        <ServiceIcon icon={s.icon} />
-                      </span>
-                      <h3 className="mt-4 font-display text-lg font-semibold text-deep-green">
-                        {s.title}
-                      </h3>
-                      <p className="mt-2 text-sm text-ink/70">{s.shortDesc}</p>
-                      <span className="mt-4 inline-block text-sm font-semibold text-sage">
-                        Learn more &rarr;
-                      </span>
-                    </Link>
-                  ))}
-              </div>
-            </div>
-          ))}
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {servicesByCategory.map((s) => (
+              <Link
+                key={s.slug}
+                href={`/services/${s.slug}`}
+                className="rounded-lg border border-line bg-cream p-6 transition hover:border-deep-green"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-deep-green/10 text-deep-green">
+                    <ServiceIcon icon={s.icon} />
+                  </span>
+                  <span className="text-[10px] font-semibold uppercase tracking-wide text-sage">
+                    {s.category}
+                  </span>
+                </div>
+                <h3 className="mt-4 font-display text-lg font-semibold text-deep-green">
+                  {s.title}
+                </h3>
+                <p className="mt-2 text-sm text-ink/70">{s.shortDesc}</p>
+                <span className="mt-4 inline-block text-sm font-semibold text-sage">
+                  Learn more &rarr;
+                </span>
+              </Link>
+            ))}
+          </div>
 
           <div className="mt-10">
             <ComplianceNote compact />

@@ -246,6 +246,10 @@ export const serviceCategoryOrder: ServiceCategory[] = [
   "Advisory & Specialty",
 ];
 
+export const servicesByCategory: Service[] = serviceCategoryOrder.flatMap((category) =>
+  services.filter((s) => s.category === category)
+);
+
 export const trustStats = [
   { value: "10+", label: "Years Combined Industry Experience" },
   { value: "100%", label: "ACCA-Qualified Team" },

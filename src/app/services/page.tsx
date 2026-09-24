@@ -4,7 +4,7 @@ import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
 import ComplianceNote from "@/components/ComplianceNote";
 import ServiceIcon from "@/components/ServiceIcon";
-import { services, serviceCategoryOrder } from "@/lib/site-data";
+import { servicesByCategory } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -24,35 +24,31 @@ export default function ServicesPage() {
         <ComplianceNote />
       </section>
       <section className="mx-auto max-w-6xl px-6 py-20">
-        {serviceCategoryOrder.map((category) => (
-          <div key={category} className="mb-14 last:mb-0">
-            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
-              {category}
-            </h2>
-            <div className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {services
-                .filter((s) => s.category === category)
-                .map((s) => (
-                  <Link
-                    key={s.slug}
-                    href={`/services/${s.slug}`}
-                    className="rounded-lg border border-line bg-white p-6 transition hover:border-deep-green"
-                  >
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-deep-green/10 text-deep-green">
-                      <ServiceIcon icon={s.icon} />
-                    </span>
-                    <h3 className="mt-4 font-display text-lg font-semibold text-deep-green">
-                      {s.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-ink/70">{s.shortDesc}</p>
-                    <span className="mt-4 inline-block text-sm font-semibold text-sage">
-                      Learn more &rarr;
-                    </span>
-                  </Link>
-                ))}
-            </div>
-          </div>
-        ))}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {servicesByCategory.map((s) => (
+            <Link
+              key={s.slug}
+              href={`/services/${s.slug}`}
+              className="rounded-lg border border-line bg-white p-6 transition hover:border-deep-green"
+            >
+              <div className="flex items-center justify-between">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-deep-green/10 text-deep-green">
+                  <ServiceIcon icon={s.icon} />
+                </span>
+                <span className="text-[10px] font-semibold uppercase tracking-wide text-sage">
+                  {s.category}
+                </span>
+              </div>
+              <h3 className="mt-4 font-display text-lg font-semibold text-deep-green">
+                {s.title}
+              </h3>
+              <p className="mt-2 text-sm text-ink/70">{s.shortDesc}</p>
+              <span className="mt-4 inline-block text-sm font-semibold text-sage">
+                Learn more &rarr;
+              </span>
+            </Link>
+          ))}
+        </div>
       </section>
       <CTASection />
     </>

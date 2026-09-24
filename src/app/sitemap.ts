@@ -14,6 +14,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/insights",
     "/global-reach",
+    "/switch-to-ardafis",
+    "/services/quickbooks-outsourcing",
+    "/services/xero-outsourcing",
   ].map((route) => ({
     url: `${siteUrl}${route}`,
     lastModified: new Date(),

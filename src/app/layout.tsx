@@ -31,6 +31,9 @@ export const metadata: Metadata = {
     "offshore accounting support USA",
     "outsourced tax preparation",
     "outsourced payroll processing",
+    "outsourced sales tax preparation",
+    "1099 W-2 preparation outsourcing",
+    "outsourced controller and CFO services",
     "QuickBooks Xero bookkeeping service",
   ],
   openGraph: {
@@ -60,7 +63,11 @@ const jsonLd = {
     "Bookkeeping",
     "Payroll Processing",
     "Tax Preparation",
+    "Sales and Use Tax Preparation",
+    "1099 and W-2 Preparation",
     "Accounts Payable and Receivable",
+    "Entity Setup and Software Migration",
+    "Outsourced Controller and CFO Advisory",
     "Ecommerce Accounting",
   ],
 };

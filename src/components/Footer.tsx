@@ -43,6 +43,11 @@ export default function Footer() {
             </li>
             <li>Response within 1 business day</li>
             <li>
+              <Link href="/switch-to-ardafis" className="hover:text-deep-green">
+                Switching providers? &rarr;
+              </Link>
+            </li>
+            <li>
               <Link href="/global-reach" className="hover:text-deep-green">
                 Gulf region services &rarr;
               </Link>

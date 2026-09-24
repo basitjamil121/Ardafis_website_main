@@ -6,6 +6,7 @@ import IndustriesSection from "@/components/IndustriesSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import SoftwareBadges from "@/components/SoftwareBadges";
 import CTASection from "@/components/CTASection";
+import ComplianceNote from "@/components/ComplianceNote";
 import { services, pricingTiers } from "@/lib/site-data";
 
 export default function Home() {
@@ -42,6 +43,12 @@ export default function Home() {
           <p className="mt-4 text-sm text-ink/55">
             No dedicated-staff contracts required — pay for what you use.
           </p>
+          <p className="mt-2 text-sm text-ink/55">
+            Already working with a bookkeeper or another provider?{" "}
+            <Link href="/switch-to-ardafis" className="font-semibold text-deep-green hover:underline">
+              See how switching works &rarr;
+            </Link>
+          </p>
         </div>
       </section>
 
@@ -73,6 +80,9 @@ export default function Home() {
                 </span>
               </Link>
             ))}
+          </div>
+          <div className="mt-10">
+            <ComplianceNote compact />
           </div>
         </div>
       </section>

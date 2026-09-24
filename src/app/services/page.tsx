@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
+import ComplianceNote from "@/components/ComplianceNote";
 import { services } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Outsourced bookkeeping, payables & receivables, payroll, tax prep, advisory reporting, and ecommerce accounting for US CPA firms.",
+    "Outsourced bookkeeping, payables & receivables, payroll, tax prep, sales tax, 1099/W-2, entity setup, advisory/CFO, and ecommerce accounting for US CPA firms.",
 };
 
 export default function ServicesPage() {
@@ -18,6 +19,9 @@ export default function ServicesPage() {
         title="Outsourced accounting services built for US CPA firms"
         desc="Pick a single service or hand off the full workload — every engagement runs inside the software your firm already uses."
       />
+      <section className="mx-auto max-w-6xl px-6 pt-10">
+        <ComplianceNote />
+      </section>
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (

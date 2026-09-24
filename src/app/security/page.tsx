@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
+import ComplianceNote from "@/components/ComplianceNote";
 
 export const metadata: Metadata = {
   title: "Security & Confidentiality",
   description:
-    "How Ardafis Partners protects client financial data: NDA-backed engagements, scoped access, and secure workflow practices.",
+    "How Ardafis Partners protects client financial data: NDA-backed engagements, scoped access, IRS-compliant disclosure consent, and secure workflow practices.",
 };
 
 const practices = [
@@ -50,7 +51,26 @@ export default function SecurityPage() {
           ))}
         </div>
 
-        <div className="mt-12 rounded-lg border border-line bg-cream p-6">
+        <div className="mt-12">
+          <h2 className="font-display text-lg font-semibold text-deep-green">
+            IRC &sect;7216 consent, handled before any data moves
+          </h2>
+          <p className="mt-2 text-ink/70">
+            US tax rules (IRC &sect;7216) require your client&apos;s consent
+            before their tax return information is disclosed to a third-party
+            preparer — with an added disclosure requirement when that
+            preparer is located outside the US. We&apos;ll help your firm put
+            a compliant consent process in place before any client data is
+            shared with us, rather than leaving your firm to figure it out
+            after the fact.
+          </p>
+        </div>
+
+        <div className="mt-10">
+          <ComplianceNote />
+        </div>
+
+        <div className="mt-10 rounded-lg border border-line bg-cream p-6">
           <h2 className="font-display text-lg font-semibold text-deep-green">
             What we're working toward
           </h2>

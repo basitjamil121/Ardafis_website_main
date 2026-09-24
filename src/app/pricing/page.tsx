@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import CostComparison from "@/components/CostComparison";
 import CTASection from "@/components/CTASection";
+import ComplianceNote from "@/components/ComplianceNote";
 import { pricingTiers } from "@/lib/site-data";
 
 export const metadata: Metadata = {
@@ -26,6 +27,10 @@ const faqs = [
   {
     q: "How is our clients' data kept confidential?",
     a: "Every engagement is covered by an NDA, access is scoped per client rather than firm-wide, and credentials are never shared over unsecured channels. See our Security page for details.",
+  },
+  {
+    q: "Who signs and files the work — you or us?",
+    a: "You do. Our partners are ACCA-qualified, not US-licensed CPAs or EAs, so we prepare returns, filings, and workpapers to your standard, and your licensed CPA or EA reviews, signs, and retains full professional responsibility — the same as if the work were done in-house.",
   },
 ];
 
@@ -87,6 +92,10 @@ export default function PricingPage() {
       </section>
 
       <CostComparison />
+
+      <section className="mx-auto max-w-4xl px-6 pt-16">
+        <ComplianceNote />
+      </section>
 
       <section className="mx-auto max-w-4xl px-6 py-20">
         <h2 className="font-display text-2xl font-bold text-deep-green">

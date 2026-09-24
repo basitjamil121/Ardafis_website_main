@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
+import ComplianceNote from "@/components/ComplianceNote";
 import { services } from "@/lib/site-data";
 
 export function generateStaticParams() {
@@ -59,6 +60,41 @@ export default async function ServiceDetailPage({
               </li>
             ))}
           </ul>
+
+          {service.tiers && (
+            <div className="mt-10">
+              <h2 className="font-display text-2xl font-bold text-deep-green">
+                Pick the depth your client needs
+              </h2>
+              <div className="mt-6 flex flex-col gap-4">
+                {service.tiers.map((tier, i) => (
+                  <div key={tier.name} className="rounded-lg border border-line bg-cream p-6">
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-deep-green text-xs font-bold text-white">
+                        {i + 1}
+                      </span>
+                      <h3 className="font-display text-lg font-semibold text-deep-green">
+                        {tier.name}
+                      </h3>
+                    </div>
+                    <ul className="mt-3 flex flex-col gap-2 pl-10">
+                      {tier.items.map((item) => (
+                        <li key={item} className="list-disc text-sm text-ink/70">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {service.complianceNote && (
+            <div className="mt-10">
+              <ComplianceNote />
+            </div>
+          )}
         </div>
         <div>
           <div className="rounded-lg border border-line bg-cream p-6">

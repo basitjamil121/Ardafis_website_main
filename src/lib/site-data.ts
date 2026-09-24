@@ -18,6 +18,11 @@ export const navLinks: NavLink[] = [
   { label: "Contact", href: "/contact" },
 ];
 
+export type ServiceTier = {
+  name: string;
+  items: string[];
+};
+
 export type Service = {
   slug: string;
   title: string;
@@ -26,6 +31,8 @@ export type Service = {
   keywords: string;
   bullets: string[];
   software: string[];
+  tiers?: ServiceTier[];
+  complianceNote?: boolean;
 };
 
 export const services: Service[] = [
@@ -91,13 +98,63 @@ export const services: Service[] = [
       "Review-ready files handed back to your reviewing CPA",
     ],
     software: ["Drake Tax", "UltraTax", "Lacerte", "ProSeries"],
+    complianceNote: true,
+  },
+  {
+    slug: "sales-tax-preparation",
+    title: "Sales & Use Tax Preparation",
+    shortDesc: "Multi-state sales and use tax return preparation, including nexus tracking.",
+    heroDesc:
+      "Multi-state sales tax has become its own full-time job for a lot of firms — we prepare the returns so your reviewing CPA can focus on sign-off, not data entry.",
+    keywords: "outsourced sales tax preparation, multi-state sales tax support for CPA firms, use tax return prep",
+    bullets: [
+      "Multi-state sales and use tax return preparation",
+      "Economic nexus tracking across states",
+      "Taxability mapping by product or service line",
+      "Reconciliation of collected vs. remitted tax",
+      "Review-ready filings handed back to your firm",
+    ],
+    software: ["Avalara", "TaxJar", "QuickBooks Online", "Xero"],
+    complianceNote: true,
+  },
+  {
+    slug: "1099-w2-preparation",
+    title: "1099 & W-2 Preparation Support",
+    shortDesc: "Vendor and employee year-end form preparation, TIN matching, and draft filings.",
+    heroDesc:
+      "Year-end 1099 and W-2 season creates a spike of low-complexity, high-penalty-risk work — we handle the volume so your team isn't chasing W-9s in January.",
+    keywords: "1099 preparation outsourcing, W-2 preparation service, TIN matching support for CPA firms",
+    bullets: [
+      "Vendor payment review and 1099-NEC/1099-MISC eligibility screening",
+      "W-9 collection tracking and TIN matching",
+      "Draft form preparation for your firm's review and filing",
+      "Employee W-2 preparation support alongside payroll processing",
+    ],
+    software: ["QuickBooks Online", "Gusto", "Track1099", "Xero"],
+    complianceNote: true,
+  },
+  {
+    slug: "entity-setup-software-migration",
+    title: "Entity Setup & Software Migration",
+    shortDesc: "New-entity chart of accounts setup and migration between accounting platforms.",
+    heroDesc:
+      "Whether it's a brand-new entity or a client switching off a legacy platform, we handle the setup and data migration so nothing gets lost in the transition.",
+    keywords: "QuickBooks migration service, Xero setup for new business, chart of accounts setup outsourcing",
+    bullets: [
+      "Chart of accounts design for new entities",
+      "Migration between QuickBooks, Xero, Sage, and Odoo",
+      "Historical data conversion and parallel-run testing",
+      "Class, location, and multi-entity tracking setup",
+      "App and bank-feed connection setup",
+    ],
+    software: ["QuickBooks Online", "Xero", "Sage", "Odoo"],
   },
   {
     slug: "advisory-reporting",
-    title: "Advisory & Reporting",
-    shortDesc: "Month-end close, management reports, KPI dashboards, and cash-flow forecasting.",
+    title: "Advisory, Controller & CFO Services",
+    shortDesc: "A tiered ladder from month-end close up through fractional CFO-level strategy.",
     heroDesc:
-      "Beyond the books — management reporting and cash-flow visibility that helps your clients (and your firm) make better decisions.",
+      "Not every client needs a CFO, and not every client needs just a bookkeeper. This is structured as a ladder so you can place each client at the depth they actually need.",
     keywords: "outsourced controller services, virtual CFO support, management reporting outsourcing",
     bullets: [
       "Month-end close checklists and reporting packages",
@@ -106,6 +163,32 @@ export const services: Service[] = [
       "Board-ready and investor-ready financial packages",
     ],
     software: ["QuickBooks Online", "Xero", "Google Sheets", "Excel"],
+    tiers: [
+      {
+        name: "Month-End Close & Accounting",
+        items: [
+          "Full-cycle reconciliations and GL maintenance",
+          "Standard monthly reporting package",
+          "Close checklist ownership",
+        ],
+      },
+      {
+        name: "Controller-Level Oversight",
+        items: [
+          "Review and sign-off on the close process",
+          "Cash-flow forecasting and budget-to-actual analysis",
+          "Custom KPI dashboards",
+        ],
+      },
+      {
+        name: "Fractional CFO",
+        items: [
+          "Strategic financial planning and scenario modeling",
+          "Board- and investor-ready reporting packages",
+          "Coordination with outside advisors on financing or transactions",
+        ],
+      },
+    ],
   },
   {
     slug: "ecommerce-accounting",

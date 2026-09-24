@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import CTASection from "@/components/CTASection";
@@ -42,6 +43,12 @@ export default function HowItWorksPage() {
               not a fixed package that over- or under-charges you.
             </p>
           </div>
+          <Link
+            href="/switch-to-ardafis"
+            className="mt-8 inline-block text-sm font-semibold text-deep-green hover:underline"
+          >
+            Already have a bookkeeper or provider? See how switching works &rarr;
+          </Link>
         </div>
       </section>
 

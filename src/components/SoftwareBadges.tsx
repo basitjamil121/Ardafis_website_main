@@ -1,14 +1,16 @@
+import Link from "next/link";
+
 const platforms = [
-  "QuickBooks Online",
-  "QuickBooks Desktop",
-  "Xero",
-  "Sage",
-  "Odoo",
-  "Gusto",
-  "Bill.com",
-  "Drake Tax",
-  "UltraTax",
-  "Shopify / A2X",
+  { name: "QuickBooks Online", href: "/services/quickbooks-outsourcing" },
+  { name: "QuickBooks Desktop", href: "/services/quickbooks-outsourcing" },
+  { name: "Xero", href: "/services/xero-outsourcing" },
+  { name: "Sage", href: null },
+  { name: "Odoo", href: null },
+  { name: "Gusto", href: null },
+  { name: "Bill.com", href: null },
+  { name: "Drake Tax", href: null },
+  { name: "UltraTax", href: null },
+  { name: "Shopify / A2X", href: null },
 ];
 
 export default function SoftwareBadges() {
@@ -19,14 +21,24 @@ export default function SoftwareBadges() {
           Platforms We Work In Every Day
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          {platforms.map((name) => (
-            <span
-              key={name}
-              className="rounded-full border border-line bg-cream px-4 py-2 text-sm font-medium text-ink/75"
-            >
-              {name}
-            </span>
-          ))}
+          {platforms.map((p) =>
+            p.href ? (
+              <Link
+                key={p.name}
+                href={p.href}
+                className="rounded-full border border-line bg-cream px-4 py-2 text-sm font-medium text-ink/75 transition hover:border-deep-green hover:text-deep-green"
+              >
+                {p.name}
+              </Link>
+            ) : (
+              <span
+                key={p.name}
+                className="rounded-full border border-line bg-cream px-4 py-2 text-sm font-medium text-ink/75"
+              >
+                {p.name}
+              </span>
+            )
+          )}
         </div>
       </div>
     </section>

@@ -23,6 +23,19 @@ export type ServiceTier = {
   items: string[];
 };
 
+export type ServiceIconKey =
+  | "book"
+  | "exchange"
+  | "users"
+  | "file-text"
+  | "receipt"
+  | "file-check"
+  | "building"
+  | "trending-up"
+  | "cart";
+
+export type ServiceCategory = "Bookkeeping & Operations" | "Tax & Compliance" | "Advisory & Specialty";
+
 export type Service = {
   slug: string;
   title: string;
@@ -31,6 +44,8 @@ export type Service = {
   keywords: string;
   bullets: string[];
   software: string[];
+  category: ServiceCategory;
+  icon: ServiceIconKey;
   tiers?: ServiceTier[];
   complianceNote?: boolean;
 };
@@ -52,6 +67,8 @@ export const services: Service[] = [
       "Chart of accounts setup and cleanup",
     ],
     software: ["QuickBooks Online", "QuickBooks Desktop", "Xero", "Sage", "Odoo"],
+    category: "Bookkeeping & Operations",
+    icon: "book",
   },
   {
     slug: "payables-receivables",
@@ -67,6 +84,8 @@ export const services: Service[] = [
       "Vendor and customer statement reconciliation",
     ],
     software: ["QuickBooks Online", "Bill.com", "Xero", "Odoo"],
+    category: "Bookkeeping & Operations",
+    icon: "exchange",
   },
   {
     slug: "payroll",
@@ -82,6 +101,8 @@ export const services: Service[] = [
       "Payroll tax filing support in coordination with your firm",
     ],
     software: ["Gusto", "Zoho Payroll", "QuickBooks Payroll", "ADP"],
+    category: "Bookkeeping & Operations",
+    icon: "users",
   },
   {
     slug: "tax-preparation",
@@ -98,6 +119,8 @@ export const services: Service[] = [
       "Review-ready files handed back to your reviewing CPA",
     ],
     software: ["Drake Tax", "UltraTax", "Lacerte", "ProSeries"],
+    category: "Tax & Compliance",
+    icon: "file-text",
     complianceNote: true,
   },
   {
@@ -115,6 +138,8 @@ export const services: Service[] = [
       "Review-ready filings handed back to your firm",
     ],
     software: ["Avalara", "TaxJar", "QuickBooks Online", "Xero"],
+    category: "Tax & Compliance",
+    icon: "receipt",
     complianceNote: true,
   },
   {
@@ -131,6 +156,8 @@ export const services: Service[] = [
       "Employee W-2 preparation support alongside payroll processing",
     ],
     software: ["QuickBooks Online", "Gusto", "Track1099", "Xero"],
+    category: "Tax & Compliance",
+    icon: "file-check",
     complianceNote: true,
   },
   {
@@ -148,6 +175,8 @@ export const services: Service[] = [
       "App and bank-feed connection setup",
     ],
     software: ["QuickBooks Online", "Xero", "Sage", "Odoo"],
+    category: "Bookkeeping & Operations",
+    icon: "building",
   },
   {
     slug: "advisory-reporting",
@@ -163,6 +192,8 @@ export const services: Service[] = [
       "Board-ready and investor-ready financial packages",
     ],
     software: ["QuickBooks Online", "Xero", "Google Sheets", "Excel"],
+    category: "Advisory & Specialty",
+    icon: "trending-up",
     tiers: [
       {
         name: "Month-End Close & Accounting",
@@ -204,7 +235,15 @@ export const services: Service[] = [
       "Sales tax mapping support across channels",
     ],
     software: ["Shopify", "A2X", "QuickBooks Online", "Xero"],
+    category: "Advisory & Specialty",
+    icon: "cart",
   },
+];
+
+export const serviceCategoryOrder: ServiceCategory[] = [
+  "Bookkeeping & Operations",
+  "Tax & Compliance",
+  "Advisory & Specialty",
 ];
 
 export const trustStats = [

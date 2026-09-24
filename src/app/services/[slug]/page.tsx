@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
 import ComplianceNote from "@/components/ComplianceNote";
+import ServiceIcon from "@/components/ServiceIcon";
 import { services } from "@/lib/site-data";
 
 export function generateStaticParams() {
@@ -40,6 +41,9 @@ export default async function ServiceDetailPage({
           <Link href="/services" className="text-sm font-semibold text-sage hover:text-deep-green">
             &larr; All services
           </Link>
+          <span className="mt-4 flex h-12 w-12 items-center justify-center rounded-full bg-deep-green/10 text-deep-green">
+            <ServiceIcon icon={service.icon} className="h-6 w-6" />
+          </span>
           <h1 className="mt-4 max-w-3xl font-display text-3xl font-bold leading-tight text-deep-green md:text-4xl">
             {service.title}
           </h1>

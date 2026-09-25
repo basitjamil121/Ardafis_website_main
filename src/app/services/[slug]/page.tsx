@@ -23,6 +23,7 @@ export async function generateMetadata({
     title: service.title,
     description: service.heroDesc,
     keywords: service.keywords.split(", "),
+    alternates: { canonical: `/services/${service.slug}` },
   };
 }
 
@@ -35,14 +36,48 @@ export default async function ServiceDetailPage({
   const service = services.find((s) => s.slug === slug);
   if (!service) notFound();
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ardafispartners.com";
+  const url = `${siteUrl}/services/${service.slug}`;
+
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    description: service.heroDesc,
+    provider: { "@type": "ProfessionalService", name: "Ardafis Partners" },
+    areaServed: "United States",
+    category: service.category,
+    url,
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${siteUrl}/services` },
+      { "@type": "ListItem", position: 3, name: service.title, item: url },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <section className="relative overflow-hidden border-b border-line bg-gradient-to-br from-white via-white to-cream">
         <BrandMotif className="pointer-events-none absolute -right-24 -top-32 h-[420px] w-[420px] md:-right-12 md:-top-40 md:h-[520px] md:w-[520px]" />
         <div className="relative mx-auto max-w-6xl px-6 py-16 md:py-20">
-          <Link href="/services" className="text-sm font-semibold text-sage hover:text-deep-green">
-            &larr; All services
-          </Link>
+          <nav aria-label="Breadcrumb" className="text-xs text-ink/50">
+            <Link href="/" className="hover:text-deep-green">Home</Link>
+            <span className="mx-1.5">/</span>
+            <Link href="/services" className="hover:text-deep-green">Services</Link>
+          </nav>
           <span className="mt-4 flex h-12 w-12 items-center justify-center rounded-full bg-deep-green/10 text-deep-green">
             <ServiceIcon icon={service.icon} className="h-6 w-6" />
           </span>

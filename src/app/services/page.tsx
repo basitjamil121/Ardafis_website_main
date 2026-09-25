@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Services",
   description:
     "Outsourced bookkeeping, payables & receivables, payroll, tax prep, sales tax, 1099/W-2, entity setup, advisory/CFO, and ecommerce accounting for US CPA firms.",
+  alternates: { canonical: "/services" },
 };
 
 export default function ServicesPage() {

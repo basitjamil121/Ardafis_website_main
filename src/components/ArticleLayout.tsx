@@ -4,17 +4,54 @@ import CTASection from "@/components/CTASection";
 type ArticleLayoutProps = {
   title: string;
   date: string;
+  slug: string;
+  excerpt: string;
   children: React.ReactNode;
 };
 
-export default function ArticleLayout({ title, date, children }: ArticleLayoutProps) {
+export default function ArticleLayout({ title, date, slug, excerpt, children }: ArticleLayoutProps) {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ardafispartners.com";
+  const url = `${siteUrl}/insights/${slug}`;
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description: excerpt,
+    datePublished: date,
+    dateModified: date,
+    author: { "@type": "Organization", name: "Ardafis Partners" },
+    publisher: { "@type": "Organization", name: "Ardafis Partners" },
+    mainEntityOfPage: url,
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "Insights", item: `${siteUrl}/insights` },
+      { "@type": "ListItem", position: 3, name: title, item: url },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <section className="border-b border-line bg-white">
         <div className="mx-auto max-w-3xl px-6 py-16 md:py-20">
-          <Link href="/insights" className="text-sm font-semibold text-sage hover:text-deep-green">
-            &larr; All insights
-          </Link>
+          <nav aria-label="Breadcrumb" className="text-xs text-ink/50">
+            <Link href="/" className="hover:text-deep-green">Home</Link>
+            <span className="mx-1.5">/</span>
+            <Link href="/insights" className="hover:text-deep-green">Insights</Link>
+          </nav>
           <p className="mt-4 text-xs font-medium uppercase tracking-wide text-ink/50">
             {new Date(date).toLocaleDateString("en-US", {
               year: "numeric",

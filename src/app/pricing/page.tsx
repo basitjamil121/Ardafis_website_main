@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Pricing",
   description:
     "Transparent per-client, hourly, and per-return pricing for outsourced bookkeeping, payroll, and tax-prep support — no dedicated-staff contracts required.",
+  alternates: { canonical: "/pricing" },
 };
 
 const faqs = [

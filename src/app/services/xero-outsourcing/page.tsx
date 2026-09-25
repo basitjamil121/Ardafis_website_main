@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     "Xero bookkeeping service",
     "Xero certified advisor for CPA firms",
   ],
+  alternates: { canonical: "/services/xero-outsourcing" },
 };
 
 const capabilities = [

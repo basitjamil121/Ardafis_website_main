@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     "QuickBooks Online bookkeeping service",
     "QuickBooks certified bookkeeper for CPA firms",
   ],
+  alternates: { canonical: "/services/quickbooks-outsourcing" },
 };
 
 const capabilities = [

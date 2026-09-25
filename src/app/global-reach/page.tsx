@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Global Reach — Gulf Region Services",
   description:
     "Ardafis Partners is extending outsourced accounting and bookkeeping support to real estate, retail, freelance, and SME clients across the Gulf region.",
+  alternates: { canonical: "/global-reach" },
 };
 
 const gulfVerticals = [

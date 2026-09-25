@@ -12,11 +12,12 @@ export const metadata: Metadata = {
     "outsourced bookkeeping software",
     "Sage vs QuickBooks outsourcing",
   ],
+  alternates: { canonical: "/insights/quickbooks-vs-xero-vs-sage-outsourcing" },
 };
 
 export default function Article() {
   return (
-    <ArticleLayout title={post.title} date={post.date}>
+    <ArticleLayout title={post.title} date={post.date} slug={post.slug} excerpt={post.excerpt}>
       <p>
         When firms ask which accounting platform is &quot;best&quot; before
         outsourcing bookkeeping, it&apos;s usually the wrong question. The

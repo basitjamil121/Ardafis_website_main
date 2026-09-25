@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Meet the ACCA-qualified team behind Ardafis Partners — outsourced accounting built on US practice experience, ecommerce bookkeeping, and automation.",
+  alternates: { canonical: "/about" },
 };
 
 const team = [

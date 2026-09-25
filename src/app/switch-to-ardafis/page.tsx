@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Switch to Ardafis",
   description:
     "How CPA firms move bookkeeping, payroll, or tax-prep work to Ardafis Partners without disrupting existing client relationships.",
+  alternates: { canonical: "/switch-to-ardafis" },
 };
 
 const steps = [

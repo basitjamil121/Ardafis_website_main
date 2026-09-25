@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Security & Confidentiality",
   description:
     "How Ardafis Partners protects client financial data: NDA-backed engagements, scoped access, IRS-compliant disclosure consent, and secure workflow practices.",
+  alternates: { canonical: "/security" },
 };
 
 const practices = [

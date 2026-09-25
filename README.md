@@ -22,6 +22,8 @@ the contact form works without them (it just logs submissions instead of emailin
 | `NEXT_PUBLIC_SITE_URL` | No | Used for metadata/canonical links. Defaults to `https://ardafispartners.com` if unset. |
 | `RESEND_API_KEY` | No | Enables the contact form to actually send email via [Resend](https://resend.com). |
 | `CONTACT_EMAIL_TO` | No | Destination inbox for contact form submissions. |
+| `GOOGLE_SITE_VERIFICATION` | No | Verifies domain ownership in Google Search Console (Settings → Ownership verification → HTML tag → paste just the `content` value). |
+| `BING_SITE_VERIFICATION` | No | Same idea for Bing Webmaster Tools. |
 
 ## Deploying — GitHub + Vercel (hobby project)
 

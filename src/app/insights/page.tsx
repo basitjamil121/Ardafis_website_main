@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Insights",
   description:
     "Practical guidance for CPA firms and solo practitioners on outsourcing, pricing, and software decisions.",
+  alternates: { canonical: "/insights" },
 };
 
 export default function InsightsPage() {

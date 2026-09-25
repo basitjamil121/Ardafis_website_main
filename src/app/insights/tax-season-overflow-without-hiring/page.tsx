@@ -12,11 +12,12 @@ export const metadata: Metadata = {
     "seasonal tax preparer alternative",
     "outsourced tax preparation support",
   ],
+  alternates: { canonical: "/insights/tax-season-overflow-without-hiring" },
 };
 
 export default function Article() {
   return (
-    <ArticleLayout title={post.title} date={post.date}>
+    <ArticleLayout title={post.title} date={post.date} slug={post.slug} excerpt={post.excerpt}>
       <p>
         Every CPA firm knows the pattern: workload triples for roughly ten
         weeks a year, and the rest of the year doesn&apos;t justify the

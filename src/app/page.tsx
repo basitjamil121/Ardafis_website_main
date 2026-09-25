@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import StatsBar from "@/components/StatsBar";
 import CredentialBadges from "@/components/CredentialBadges";
@@ -10,6 +11,10 @@ import ComplianceNote from "@/components/ComplianceNote";
 import ServiceIcon from "@/components/ServiceIcon";
 import BrandMotif from "@/components/BrandMotif";
 import { servicesByCategory, pricingTiers } from "@/lib/site-data";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (

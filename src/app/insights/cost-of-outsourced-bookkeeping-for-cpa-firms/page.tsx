@@ -12,11 +12,12 @@ export const metadata: Metadata = {
     "outsourced bookkeeping pricing CPA firm",
     "per client bookkeeping pricing",
   ],
+  alternates: { canonical: "/insights/cost-of-outsourced-bookkeeping-for-cpa-firms" },
 };
 
 export default function Article() {
   return (
-    <ArticleLayout title={post.title} date={post.date}>
+    <ArticleLayout title={post.title} date={post.date} slug={post.slug} excerpt={post.excerpt}>
       <p>
         Most CPA firms considering outsourced bookkeeping run into the same
         problem: pricing pages that quote a single flat number, which almost

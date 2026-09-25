@@ -21,7 +21,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ardafispartners.com
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Ardafis Partners | Outsourced Bookkeeping & Accounts Services for US CPA Firms",
+    default: "Ardafis Partners | Outsourced Bookkeeping for CPA Firms",
     template: "%s | Ardafis Partners",
   },
   description:
@@ -50,15 +50,23 @@ export const metadata: Metadata = {
     description:
       "Your outsourced accounts & finance team, built on precision.",
   },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    other: process.env.BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION }
+      : undefined,
+  },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "Ardafis Partners",
+  url: siteUrl,
   description:
     "Outsourced bookkeeping, payroll, and tax-prep support for US CPA firms and solo practitioners.",
   areaServed: "United States",
+  priceRange: "$$",
   knowsAbout: [
     "Bookkeeping",
     "Payroll Processing",

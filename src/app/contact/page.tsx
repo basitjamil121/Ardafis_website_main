@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Get in touch with Ardafis Partners or request a callback to discuss outsourced bookkeeping, payroll, and tax-prep support for your firm.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "How It Works",
   description:
     "How Ardafis Partners onboards US CPA firms: discovery call, scope & pricing, secure onboarding, and ongoing delivery.",
+  alternates: { canonical: "/how-it-works" },
 };
 
 export default function HowItWorksPage() {

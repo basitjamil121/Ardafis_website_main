@@ -2,7 +2,10 @@
 
 :root {
   --color-deep-green: #1e3a2e;
+  --color-forest: #132a20;
+  --color-moss: #2f5a45;
   --color-sage: #7e9484;
+  --color-mist: #9aad9c;
   --color-cream: #f6f4ef;
   --color-ink: #23281f;
   --color-line: #e4e0d6;
@@ -15,7 +18,10 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-deep-green: var(--color-deep-green);
+  --color-forest: var(--color-forest);
+  --color-moss: var(--color-moss);
   --color-sage: var(--color-sage);
+  --color-mist: var(--color-mist);
   --color-cream: var(--color-cream);
   --color-ink: var(--color-ink);
   --color-line: var(--color-line);
@@ -23,8 +29,146 @@
   --font-sans: var(--font-montserrat);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
+}
+
+/* ---------- Aurora: slow-moving gradient behind dark heroes (BCG-style) ---------- */
+
+.aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-forest) 0%, var(--color-deep-green) 55%, #1a3328 100%);
+}
+
+.aurora::after {
+  /* soft vignette so text stays legible over the blobs */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 40%, transparent 0%, rgb(19 42 32 / 0.55) 70%);
+}
+
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.55;
+  will-change: transform;
+}
+
+.aurora-blob-1 {
+  width: 55vw;
+  height: 55vw;
+  top: -20%;
+  right: -10%;
+  background: var(--color-moss);
+  animation: aurora-drift-1 22s ease-in-out infinite alternate;
+}
+
+.aurora-blob-2 {
+  width: 40vw;
+  height: 40vw;
+  bottom: -25%;
+  right: 20%;
+  background: var(--color-sage);
+  opacity: 0.35;
+  animation: aurora-drift-2 26s ease-in-out infinite alternate;
+}
+
+.aurora-blob-3 {
+  width: 30vw;
+  height: 30vw;
+  top: 10%;
+  left: -10%;
+  background: var(--color-mist);
+  opacity: 0.18;
+  animation: aurora-drift-3 30s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-drift-1 {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-12vw, 10vh) scale(1.15); }
+}
+
+@keyframes aurora-drift-2 {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(10vw, -12vh) scale(0.9); }
+}
+
+@keyframes aurora-drift-3 {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(14vw, 8vh) scale(1.2); }
+}
+
+/* ---------- Entrance + scroll-reveal ---------- */
+
+/* CSS-only entrance for above-the-fold content, so it never waits on JS */
+.enter {
+  animation: enter-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes enter-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: none; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Glass surface used for cards laid over photos and the floating nav */
+.glass {
+  background: rgb(255 255 255 / 0.84);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgb(255 255 255 / 0.55);
+}
+
+/* Floating nav: warmer and more opaque than .glass so it reads on dark and light sections */
+.glass-nav {
+  background: rgb(246 244 239 / 0.94);
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid rgb(255 255 255 / 0.7);
+}
+
+.glass-dark {
+  background: rgb(19 42 32 / 0.55);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgb(255 255 255 / 0.14);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .aurora-blob,
+  .enter {
+    animation: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

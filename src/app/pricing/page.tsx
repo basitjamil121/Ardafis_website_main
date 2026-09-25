@@ -3,7 +3,9 @@ import PageHero from "@/components/PageHero";
 import CostComparison from "@/components/CostComparison";
 import CTASection from "@/components/CTASection";
 import ComplianceNote from "@/components/ComplianceNote";
-import { pricingTiers } from "@/lib/site-data";
+import PricingCards from "@/components/PricingCards";
+import Reveal from "@/components/Reveal";
+import { photos } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -56,59 +58,39 @@ export default function PricingPage() {
         eyebrow="Simple, Transparent Pricing"
         title="Pay for the work, not for a headcount"
         desc="No dedicated-staff lock-in required to get started — pay for what you need, scale up as the relationship grows."
+        image={photos.calcLaptop.src}
+        imageAlt={photos.calcLaptop.alt}
       />
 
-      <section className="border-b border-line bg-white">
-        <div className="mx-auto max-w-6xl px-6 py-16">
-          <div className="grid gap-6 md:grid-cols-3">
-            {pricingTiers.map((p) => (
-              <div
-                key={p.name}
-                className={`rounded-lg border p-6 shadow-sm ${
-                  p.highlight
-                    ? "border-deep-green bg-deep-green text-white shadow-md"
-                    : "border-line bg-cream text-ink"
-                }`}
-              >
-                <h2
-                  className={`font-display text-lg font-semibold ${
-                    p.highlight ? "text-white" : "text-deep-green"
-                  }`}
-                >
-                  {p.name}
-                </h2>
-                <p className="mt-3 flex items-baseline gap-1">
-                  <span className="text-3xl font-bold">{p.price}</span>
-                  <span className={`text-sm ${p.highlight ? "text-white/80" : "text-ink/60"}`}>
-                    {p.unit}
-                  </span>
-                </p>
-                <p className={`mt-3 text-sm ${p.highlight ? "text-white/85" : "text-ink/70"}`}>
-                  {p.desc}
-                </p>
-              </div>
-            ))}
-          </div>
+      <section className="bg-cream">
+        <div className="mx-auto max-w-6xl px-6 py-24 md:py-28">
+          <PricingCards />
         </div>
       </section>
 
       <CostComparison />
 
-      <section className="mx-auto max-w-4xl px-6 pt-16">
-        <ComplianceNote />
-      </section>
-
-      <section className="mx-auto max-w-4xl px-6 py-20">
-        <h2 className="font-display text-2xl font-bold text-deep-green">
-          Frequently asked questions
-        </h2>
-        <div className="mt-8 flex flex-col divide-y divide-line">
-          {faqs.map((f) => (
-            <div key={f.q} className="py-6">
-              <h3 className="font-display text-lg font-semibold text-deep-green">{f.q}</h3>
-              <p className="mt-2 text-ink/70">{f.a}</p>
-            </div>
-          ))}
+      <section className="bg-cream">
+        <div className="mx-auto grid max-w-6xl gap-14 px-6 py-24 md:py-32 lg:grid-cols-[1fr_1.5fr]">
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">FAQ</p>
+            <h2 className="mt-4 font-display text-4xl font-bold leading-[1.08] tracking-tight text-deep-green md:text-5xl">
+              Frequently asked questions
+            </h2>
+          </Reveal>
+          <div className="flex flex-col divide-y divide-line border-y border-line">
+            {faqs.map((f, i) => (
+              <Reveal key={f.q} delay={i * 60} className="py-7">
+                <h3 className="font-display text-xl font-semibold text-deep-green">{f.q}</h3>
+                <p className="mt-3 leading-relaxed text-ink/70">{f.a}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+        <div className="mx-auto max-w-6xl px-6 pb-24">
+          <Reveal>
+            <ComplianceNote />
+          </Reveal>
         </div>
       </section>
 

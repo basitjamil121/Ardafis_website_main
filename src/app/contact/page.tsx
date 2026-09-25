@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
+import Reveal from "@/components/Reveal";
 import { siteConfig } from "@/lib/site-data";
 
 export const metadata: Metadata = {
@@ -17,32 +18,40 @@ export default function ContactPage() {
         eyebrow="Let's Talk"
         title="Get in touch"
         desc="Tell us about your firm and where you need support — we'll follow up within one business day."
-      />
+      >
+        <p className="text-sm text-white/60">
+          Prefer email?{" "}
+          <a href={`mailto:${siteConfig.email}`} className="font-semibold text-white underline-offset-4 hover:underline">
+            {siteConfig.email}
+          </a>
+        </p>
+      </PageHero>
 
-      <section className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-2">
-        <div>
-          <h2 className="font-display text-2xl font-bold text-deep-green">Send a message</h2>
-          <p className="mt-2 text-sm text-ink/60">
-            Or email us directly at{" "}
-            <a href={`mailto:${siteConfig.email}`} className="font-semibold text-deep-green hover:underline">
-              {siteConfig.email}
-            </a>
-            .
-          </p>
-          <div className="mt-6">
-            <ContactForm variant="inquiry" />
-          </div>
-        </div>
+      <section className="relative z-10 -mt-12 pb-24 md:-mt-16 md:pb-32">
+        <div className="mx-auto grid max-w-6xl gap-6 px-6 lg:grid-cols-2">
+          <Reveal id="callback" className="scroll-mt-28 rounded-3xl bg-white p-8 shadow-2xl shadow-black/10 md:p-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">Recommended</p>
+            <h2 className="mt-3 font-display text-3xl font-bold text-deep-green">Book a call</h2>
+            <p className="mt-2 text-sm leading-relaxed text-ink/60">
+              Leave your details and a good time to reach you, and a partner will
+              call you directly.
+            </p>
+            <div className="mt-8">
+              <ContactForm variant="callback" />
+            </div>
+          </Reveal>
 
-        <div id="callback" className="scroll-mt-24">
-          <h2 className="font-display text-2xl font-bold text-deep-green">Request a call</h2>
-          <p className="mt-2 text-sm text-ink/60">
-            Prefer to talk it through? Leave your details and a good time to
-            reach you, and a partner will call you directly.
-          </p>
-          <div className="mt-6">
-            <ContactForm variant="callback" />
-          </div>
+          <Reveal delay={100} className="rounded-3xl bg-white p-8 shadow-2xl shadow-black/10 md:p-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">Or write to us</p>
+            <h2 className="mt-3 font-display text-3xl font-bold text-deep-green">Send a message</h2>
+            <p className="mt-2 text-sm leading-relaxed text-ink/60">
+              Tell us about the workload, the software you use, and where
+              you&apos;re stretched thinnest.
+            </p>
+            <div className="mt-8">
+              <ContactForm variant="inquiry" />
+            </div>
+          </Reveal>
         </div>
       </section>
     </>

@@ -251,10 +251,9 @@ export const servicesByCategory: Service[] = serviceCategoryOrder.flatMap((categ
 );
 
 export const trustStats = [
-  { value: "10+", label: "Years Combined Industry Experience" },
-  { value: "100%", label: "ACCA-Qualified Team" },
-  { value: "5+", label: "Accounting Platforms Supported" },
-  { value: "1", label: "Business Day Response Time" },
+  { value: "10+", label: "Years combined industry experience" },
+  { value: "10", label: "Accounting & tax platforms supported" },
+  { value: "1", label: "Business day response time" },
 ];
 
 export type Industry = {
@@ -341,12 +340,6 @@ export const pricingTiers = [
     price: "$180–$350",
     unit: "/ month",
     desc: "Flat monthly bookkeeping for one of your clients — you keep the relationship, we do the work.",
-  },
-  {
-    name: "Hourly Support",
-    price: "$12–$22",
-    unit: "/ hour",
-    desc: "Flexible hourly bookkeeping ($12–$18) or tax prep & review ($18–$22) for overflow work.",
     highlight: true,
   },
   {
@@ -354,5 +347,34 @@ export const pricingTiers = [
     price: "$35–$220",
     unit: "/ return",
     desc: "Simple individual returns from $35, business returns (1120S/1065) from $120.",
+  },
+  {
+    name: "Hourly Support",
+    price: "$12–$22",
+    unit: "/ hour",
+    desc: "Flexible hourly bookkeeping ($12–$18) or tax prep & review ($18–$22) for overflow work.",
+  },
+];
+
+export const firstThirtyDays = [
+  {
+    when: "Days 1–3",
+    title: "Discovery & NDA",
+    desc: "A call with a partner to map your workflow and software. A mutual NDA is signed before any data is shared.",
+  },
+  {
+    when: "Week 1",
+    title: "Scoped access & consent",
+    desc: "Access is granted client-by-client inside your own platforms, and we help you put IRC §7216 consent in place where tax data is involved.",
+  },
+  {
+    when: "Weeks 2–3",
+    title: "Pilot delivery",
+    desc: "We deliver the first one or two clients end-to-end — reconciliations, close pack, or review-ready returns — for your CPA to check.",
+  },
+  {
+    when: "Day 30",
+    title: "Review & scale",
+    desc: "We walk through the quality bar together, adjust the checklist to your standards, and expand only when you're satisfied.",
   },
 ];

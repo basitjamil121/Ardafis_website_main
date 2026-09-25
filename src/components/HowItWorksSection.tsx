@@ -1,28 +1,26 @@
+import Reveal from "@/components/Reveal";
 import { processSteps } from "@/lib/site-data";
 
-type HowItWorksSectionProps = {
-  compact?: boolean;
-};
-
-export default function HowItWorksSection({ compact = false }: HowItWorksSectionProps) {
+// Four engagement steps as oversized numbered columns.
+export default function HowItWorksSection() {
   return (
-    <section id="how-it-works" className={compact ? "border-b border-line bg-white" : ""}>
-      <div className="mx-auto max-w-6xl px-6 py-20">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">
-          How It Works
-        </p>
-        <h2 className="mt-3 font-display text-3xl font-bold text-deep-green">
-          From first call to ongoing delivery
-        </h2>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {processSteps.map((s) => (
-            <div key={s.step} className="rounded-lg border border-line bg-cream p-6 shadow-sm">
-              <p className="font-display text-3xl font-bold text-sage">{s.step}</p>
-              <h3 className="mt-3 font-display text-lg font-semibold text-deep-green">
-                {s.title}
-              </h3>
-              <p className="mt-2 text-sm text-ink/70">{s.desc}</p>
-            </div>
+    <section id="how-it-works" className="bg-white">
+      <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+        <Reveal className="max-w-3xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">The engagement</p>
+          <h2 className="mt-4 font-display text-4xl font-bold leading-[1.08] tracking-tight text-deep-green md:text-6xl">
+            From first call to ongoing delivery
+          </h2>
+        </Reveal>
+        <div className="mt-16 grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+          {processSteps.map((s, i) => (
+            <Reveal key={s.step} delay={i * 100} className="group bg-white p-8 transition duration-300 hover:bg-cream">
+              <p className="text-6xl font-light leading-none text-mist transition group-hover:text-deep-green">
+                {s.step}
+              </p>
+              <h3 className="mt-10 font-display text-2xl font-semibold text-deep-green">{s.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-ink/65">{s.desc}</p>
+            </Reveal>
           ))}
         </div>
       </div>

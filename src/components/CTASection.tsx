@@ -1,5 +1,6 @@
 import Link from "next/link";
-import BrandMotif from "@/components/BrandMotif";
+import Aurora from "@/components/Aurora";
+import Reveal from "@/components/Reveal";
 
 type CTASectionProps = {
   title?: string;
@@ -11,33 +12,29 @@ export default function CTASection({
   desc = "Tell us about your firm and where you need support — we'll follow up within one business day.",
 }: CTASectionProps) {
   return (
-    <section className="relative overflow-hidden border-t border-line bg-gradient-to-br from-deep-green to-[#132A20]">
-      <BrandMotif
-        variant="light"
-        className="pointer-events-none absolute -right-20 -top-20 h-[380px] w-[380px] md:-right-8 md:-top-24 md:h-[460px] md:w-[460px]"
-      />
-      <div className="relative mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-6 py-14 md:flex-row md:items-center">
-        <div>
-          <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
-            {title}
-          </h2>
-          <p className="mt-2 max-w-xl text-white/75">{desc}</p>
-        </div>
-        <div className="flex shrink-0 flex-wrap gap-3">
-          <Link
-            href="/contact"
-            className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-deep-green shadow-sm transition hover:bg-white/90"
-          >
-            Start a conversation
-          </Link>
+    <section className="relative overflow-hidden text-white">
+      <Aurora />
+      <Reveal className="relative z-10 mx-auto max-w-6xl px-6 py-24 md:py-32">
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-mist">Next step</p>
+        <h2 className="mt-5 max-w-3xl font-display text-4xl font-bold leading-[1.08] tracking-tight md:text-6xl">
+          {title}
+        </h2>
+        <p className="mt-6 max-w-xl text-lg text-white/75">{desc}</p>
+        <div className="mt-10 flex flex-wrap gap-3">
           <Link
             href="/contact#callback"
-            className="rounded-md border border-white/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-deep-green shadow-lg shadow-black/10 transition hover:bg-cream"
           >
-            Request a call
+            Book a call <span aria-hidden="true">&rarr;</span>
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center rounded-full border border-white/35 px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10"
+          >
+            Send a message
           </Link>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

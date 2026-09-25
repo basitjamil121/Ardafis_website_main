@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
 import ComplianceNote from "@/components/ComplianceNote";
+import Reveal from "@/components/Reveal";
+import SplitFeature from "@/components/SplitFeature";
+import { photos } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Security & Confidentiality",
@@ -40,48 +43,67 @@ export default function SecurityPage() {
         eyebrow="Trust & Confidentiality"
         title="How we protect your clients' financial data"
         desc="As a new firm, we'd rather tell you exactly what we do and don't have in place than overstate it. Here's the honest picture."
+        image={photos.darkDesk.src}
+        imageAlt={photos.darkDesk.alt}
       />
 
-      <section className="mx-auto max-w-4xl px-6 py-20">
-        <div className="flex flex-col divide-y divide-line">
-          {practices.map((p) => (
-            <div key={p.title} className="py-6">
-              <h2 className="font-display text-lg font-semibold text-deep-green">{p.title}</h2>
-              <p className="mt-2 text-ink/70">{p.desc}</p>
-            </div>
-          ))}
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+          <Reveal className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">Our practices</p>
+            <h2 className="mt-4 font-display text-4xl font-bold leading-[1.08] tracking-tight text-deep-green md:text-6xl">
+              Five commitments, in writing
+            </h2>
+          </Reveal>
+          <ol className="mt-14 border-t border-line">
+            {practices.map((p, i) => (
+              <Reveal
+                as="li"
+                key={p.title}
+                delay={i * 60}
+                className="grid gap-4 border-b border-line py-9 md:grid-cols-[6rem_1.2fr_1.4fr] md:items-baseline md:gap-10"
+              >
+                <span className="text-4xl font-light text-mist">0{i + 1}</span>
+                <h3 className="font-display text-2xl font-semibold text-deep-green md:text-3xl">{p.title}</h3>
+                <p className="leading-relaxed text-ink/70">{p.desc}</p>
+              </Reveal>
+            ))}
+          </ol>
         </div>
+      </section>
 
-        <div className="mt-12">
-          <h2 className="font-display text-lg font-semibold text-deep-green">
-            IRC &sect;7216 consent, handled before any data moves
-          </h2>
-          <p className="mt-2 text-ink/70">
-            US tax rules (IRC &sect;7216) require your client&apos;s consent
-            before their tax return information is disclosed to a third-party
-            preparer — with an added disclosure requirement when that
-            preparer is located outside the US. We&apos;ll help your firm put
-            a compliant consent process in place before any client data is
-            shared with us, rather than leaving your firm to figure it out
-            after the fact.
-          </p>
-        </div>
+      <SplitFeature image={photos.handsKb} eyebrow="Tax data" title="IRC §7216 consent, handled before any data moves" tone="cream">
+        <p>
+          US tax rules (IRC &sect;7216) require your client&apos;s consent before
+          their tax return information is disclosed to a third-party preparer —
+          with an added disclosure requirement when that preparer is located
+          outside the US.
+        </p>
+        <p>
+          We&apos;ll help your firm put a compliant consent process in place before
+          any client data is shared with us, rather than leaving your firm to
+          figure it out after the fact.
+        </p>
+      </SplitFeature>
 
-        <div className="mt-10">
-          <ComplianceNote />
-        </div>
-
-        <div className="mt-10 rounded-lg border border-line bg-cream p-6 shadow-sm">
-          <h2 className="font-display text-lg font-semibold text-deep-green">
-            What we're working toward
-          </h2>
-          <p className="mt-2 text-sm text-ink/70">
-            We do not currently hold formal certifications such as SOC 2 or
-            ISO 27001 — as a newly established firm, these are on our
-            roadmap as the practice grows. If a formal security review is
-            part of your firm's vendor process, tell us and we'll work
-            through it directly with you.
-          </p>
+      <section className="bg-white">
+        <div className="mx-auto grid max-w-6xl gap-6 px-6 py-24 md:py-28 lg:grid-cols-2">
+          <Reveal>
+            <ComplianceNote />
+          </Reveal>
+          <Reveal delay={100} className="rounded-3xl border border-line p-7 md:p-9">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">Roadmap</p>
+            <h2 className="mt-3 font-display text-xl font-semibold text-deep-green md:text-2xl">
+              What we&apos;re working toward
+            </h2>
+            <p className="mt-3 leading-relaxed text-ink/70">
+              We do not currently hold formal certifications such as SOC 2 or
+              ISO 27001 — as a newly established firm, these are on our roadmap
+              as the practice grows. If a formal security review is part of your
+              firm&apos;s vendor process, tell us and we&apos;ll work through it
+              directly with you.
+            </p>
+          </Reveal>
         </div>
       </section>
 

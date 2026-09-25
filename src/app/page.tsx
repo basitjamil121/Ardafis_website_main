@@ -1,16 +1,22 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import StatsBar from "@/components/StatsBar";
+import Aurora from "@/components/Aurora";
+import BigStats from "@/components/BigStats";
 import CredentialBadges from "@/components/CredentialBadges";
 import CostComparison from "@/components/CostComparison";
-import IndustriesSection from "@/components/IndustriesSection";
-import HowItWorksSection from "@/components/HowItWorksSection";
-import SoftwareBadges from "@/components/SoftwareBadges";
 import CTASection from "@/components/CTASection";
 import ComplianceNote from "@/components/ComplianceNote";
-import ServiceIcon from "@/components/ServiceIcon";
-import BrandMotif from "@/components/BrandMotif";
-import { servicesByCategory, pricingTiers } from "@/lib/site-data";
+import DeliverablesBento from "@/components/DeliverablesBento";
+import FirstThirtyDays from "@/components/FirstThirtyDays";
+import IndustryFan from "@/components/IndustryFan";
+import PlatformLogos from "@/components/PlatformLogos";
+import PricingCards from "@/components/PricingCards";
+import { CloseChecklistMockup, ReconMockup } from "@/components/ProductMockups";
+import Reveal from "@/components/Reveal";
+import ServiceRows from "@/components/ServiceRows";
+import SplitFeature from "@/components/SplitFeature";
+import { photos } from "@/lib/images";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -20,191 +26,207 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-line bg-gradient-to-br from-white via-white to-cream">
-        <BrandMotif className="pointer-events-none absolute -right-24 -top-24 h-[500px] w-[500px] md:-right-16 md:-top-32 md:h-[650px] md:w-[650px]" />
-        <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">
-            Outsourced Accounting for US CPA Firms
-          </p>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl font-bold leading-tight text-deep-green md:text-5xl">
-            Your Outsourced Accounts &amp; Finance Team, Built on Precision
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg text-ink/75">
-            Ardafis Partners gives US CPA firms and solo practitioners a
-            reliable offshore team for bookkeeping, payroll, and tax-prep
-            support — so you can take on more clients without hiring in-house.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              href="/contact"
-              className="rounded-md bg-deep-green px-6 py-3 text-sm font-semibold text-white transition hover:bg-deep-green/90"
+      <section className="relative overflow-hidden pb-40 text-white md:pb-56">
+        <Aurora />
+        <div className="relative z-10 mx-auto grid max-w-6xl gap-12 px-6 pt-36 md:pt-48 lg:grid-cols-[1.35fr_1fr] lg:items-center">
+          <div>
+            <p className="enter inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.25em] text-mist">
+              Outsourced accounting for US CPA firms
+            </p>
+            <h1
+              className="enter mt-7 font-display text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
+              style={{ animationDelay: "80ms" }}
             >
-              Start a conversation
-            </Link>
-            <Link
-              href="/pricing"
-              className="rounded-md border border-deep-green px-6 py-3 text-sm font-semibold text-deep-green transition hover:bg-deep-green/5"
+              Your outsourced accounts &amp; finance team, built on precision.
+            </h1>
+            <p
+              className="enter mt-7 max-w-xl text-lg leading-relaxed text-white/75 md:text-xl"
+              style={{ animationDelay: "160ms" }}
             >
-              See pricing
-            </Link>
+              Bookkeeping, payroll, and tax-prep support for US CPA firms and
+              solo practitioners — so you can take on more clients without
+              hiring in-house.
+            </p>
+            <div className="enter mt-10 flex flex-wrap gap-3" style={{ animationDelay: "240ms" }}>
+              <Link
+                href="/contact#callback"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-deep-green shadow-lg shadow-black/10 transition hover:bg-cream"
+              >
+                Book a call <span aria-hidden="true">&rarr;</span>
+              </Link>
+              <Link
+                href="/pricing"
+                className="inline-flex items-center rounded-full border border-white/35 px-7 py-3.5 text-sm font-semibold transition hover:bg-white/10"
+              >
+                See pricing
+              </Link>
+            </div>
+            <p className="enter mt-6 text-sm text-white/55" style={{ animationDelay: "300ms" }}>
+              Already working with a provider?{" "}
+              <Link href="/switch-to-ardafis" className="font-semibold text-white underline-offset-4 hover:underline">
+                See how switching works &rarr;
+              </Link>
+            </p>
+            <div className="enter mt-10" style={{ animationDelay: "360ms" }}>
+              <CredentialBadges />
+            </div>
           </div>
-          <p className="mt-4 text-sm text-ink/55">
-            No dedicated-staff contracts required — pay for what you use.
-          </p>
-          <p className="mt-2 text-sm text-ink/55">
-            Already working with a bookkeeper or another provider?{" "}
-            <Link href="/switch-to-ardafis" className="font-semibold text-deep-green hover:underline">
-              See how switching works &rarr;
-            </Link>
-          </p>
+
+          {/* Floating sample deliverables */}
+          <div className="relative hidden h-[460px] lg:block" aria-hidden="true">
+            <div className="enter absolute right-0 top-0 w-[330px] rotate-2" style={{ animationDelay: "300ms" }}>
+              <ReconMockup />
+            </div>
+            <div className="enter absolute bottom-0 left-0 w-[300px] -rotate-3" style={{ animationDelay: "450ms" }}>
+              <CloseChecklistMockup />
+            </div>
+          </div>
         </div>
       </section>
 
-      <CredentialBadges />
-      <StatsBar />
+      {/* Full-width photo band overlapping the hero */}
+      <div className="relative z-10 mx-auto -mt-28 max-w-6xl px-6 md:-mt-40">
+        <div className="enter relative aspect-[16/9] overflow-hidden rounded-3xl shadow-2xl shadow-black/25 md:aspect-[21/9]" style={{ animationDelay: "400ms" }}>
+          <Image
+            src={photos.nycNight.src}
+            alt={photos.nycNight.alt}
+            fill
+            preload
+            placeholder="blur"
+            sizes="(min-width: 1152px) 1104px, 100vw"
+            className="object-cover"
+          />
+          <div className="glass absolute bottom-4 left-4 max-w-xs rounded-2xl p-5 md:bottom-6 md:left-6">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sage">Built for US practices</p>
+            <p className="mt-2 font-display text-lg font-semibold leading-snug text-deep-green">
+              Working to your firm&apos;s calendar, deadlines, and review standards.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <BigStats />
 
       {/* Services */}
-      <section className="border-b border-line bg-white">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">
-            What We Do
-          </p>
-          <h2 className="mt-3 font-display text-3xl font-bold text-deep-green">
-            Services
-          </h2>
-          <p className="mt-3 max-w-2xl text-ink/70">
-            Nine service lines across three groups — pick one, or hand off the
-            full workload.
-          </p>
-
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {servicesByCategory.map((s) => (
-              <Link
-                key={s.slug}
-                href={`/services/${s.slug}`}
-                className="rounded-lg border border-line bg-cream p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-deep-green hover:shadow-md"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-deep-green/10 text-deep-green">
-                    <ServiceIcon icon={s.icon} />
-                  </span>
-                  <span className="text-[10px] font-semibold uppercase tracking-wide text-sage">
-                    {s.category}
-                  </span>
-                </div>
-                <h3 className="mt-4 font-display text-lg font-semibold text-deep-green">
-                  {s.title}
-                </h3>
-                <p className="mt-2 text-sm text-ink/70">{s.shortDesc}</p>
-                <span className="mt-4 inline-block text-sm font-semibold text-sage">
-                  Learn more &rarr;
-                </span>
-              </Link>
-            ))}
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+          <Reveal className="grid gap-6 md:grid-cols-[1.4fr_1fr] md:items-end">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">What we do</p>
+              <h2 className="mt-4 font-display text-4xl font-bold leading-[1.08] tracking-tight text-deep-green md:text-6xl">
+                Nine service lines. One accountable team.
+              </h2>
+            </div>
+            <p className="text-lg leading-relaxed text-ink/60">
+              Pick a single service or hand off the full workload — every
+              engagement runs inside the software your firm already uses.
+            </p>
+          </Reveal>
+          <div className="mt-14">
+            <ServiceRows />
           </div>
-
-          <div className="mt-10">
+          <Reveal className="mt-10">
             <ComplianceNote compact />
+          </Reveal>
+        </div>
+      </section>
+
+      <DeliverablesBento />
+
+      {/* Industries */}
+      <section className="overflow-hidden bg-cream">
+        <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">Industries we support</p>
+            <h2 className="mt-4 font-display text-4xl font-bold leading-[1.08] tracking-tight text-deep-green md:text-6xl">
+              Built for the clients your firm already serves
+            </h2>
+            <p className="mt-5 text-lg text-ink/60">
+              Our partners bring hands-on experience across these client types —
+              so the books arrive already speaking the right language.
+            </p>
+          </Reveal>
+          <div className="mt-16">
+            <IndustryFan />
           </div>
         </div>
       </section>
 
       <CostComparison />
-      <IndustriesSection />
-      <HowItWorksSection compact />
-      <SoftwareBadges />
+      <FirstThirtyDays />
+      <PlatformLogos />
 
-      {/* Pricing teaser */}
-      <section className="border-b border-line bg-cream">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">
-            Simple, Transparent Pricing
-          </p>
-          <h2 className="mt-3 font-display text-3xl font-bold text-deep-green">
-            Pricing
-          </h2>
-          <p className="mt-3 max-w-2xl text-ink/70">
-            No dedicated-staff lock-in required to get started — pay for
-            what you need, scale up as the relationship grows.
-          </p>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {pricingTiers.map((p) => (
-              <div
-                key={p.name}
-                className={`rounded-lg border p-6 shadow-sm ${
-                  p.highlight
-                    ? "border-deep-green bg-deep-green text-white shadow-md"
-                    : "border-line bg-white text-ink"
-                }`}
-              >
-                <h3
-                  className={`font-display text-lg font-semibold ${
-                    p.highlight ? "text-white" : "text-deep-green"
-                  }`}
-                >
-                  {p.name}
-                </h3>
-                <p className="mt-3 flex items-baseline gap-1">
-                  <span className="text-2xl font-bold">{p.price}</span>
-                  <span className={`text-sm ${p.highlight ? "text-white/80" : "text-ink/60"}`}>
-                    {p.unit}
-                  </span>
-                </p>
-                <p className={`mt-3 text-sm ${p.highlight ? "text-white/85" : "text-ink/70"}`}>
-                  {p.desc}
-                </p>
-              </div>
-            ))}
+      {/* Pricing */}
+      <section className="bg-cream">
+        <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+          <Reveal className="grid gap-6 md:grid-cols-[1.4fr_1fr] md:items-end">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">Engagement models</p>
+              <h2 className="mt-4 font-display text-4xl font-bold leading-[1.08] tracking-tight text-deep-green md:text-6xl">
+                Pay for the work, not a headcount
+              </h2>
+            </div>
+            <p className="text-lg leading-relaxed text-ink/60">
+              No dedicated-staff lock-in to get started — scale up as the
+              relationship proves out.
+            </p>
+          </Reveal>
+          <div className="mt-14">
+            <PricingCards />
           </div>
-          <Link
-            href="/pricing"
-            className="mt-8 inline-block text-sm font-semibold text-deep-green hover:underline"
-          >
-            View full pricing details &rarr;
-          </Link>
+          <Reveal className="mt-8">
+            <Link href="/pricing" className="text-sm font-semibold text-deep-green underline-offset-4 hover:underline">
+              Full pricing details &amp; FAQ &rarr;
+            </Link>
+          </Reveal>
         </div>
       </section>
 
-      {/* About teaser */}
-      <section className="border-b border-line bg-white">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">
-            Who We Are
-          </p>
-          <h2 className="mt-3 font-display text-3xl font-bold text-deep-green">
-            An ACCA-qualified team that already speaks your workflow
-          </h2>
-          <p className="mt-4 max-w-3xl text-ink/75">
-            Ardafis Partners was founded by ACCA-qualified accountants with
-            hands-on experience across US accounting practice, ecommerce
-            bookkeeping, and AI-driven automation. Our team has worked
-            directly inside a US accounting firm — which means we already
-            speak your software, your workflows, and your busy-season
-            pressure points.
-          </p>
-          <Link
-            href="/about"
-            className="mt-6 inline-block text-sm font-semibold text-deep-green hover:underline"
-          >
-            Meet the team &rarr;
-          </Link>
-        </div>
-      </section>
+      <SplitFeature image={photos.openOffice} eyebrow="Who we are" title="A partner-led team that already speaks your workflow">
+        <p>
+          Ardafis Partners was founded by ACCA-qualified accountants with
+          hands-on experience across US accounting practice, ecommerce
+          bookkeeping, and automation. One of our partners has worked directly
+          inside a US accounting firm — so we already know your software, your
+          workflows, and your busy-season pressure points.
+        </p>
+        <Link
+          href="/about"
+          className="mt-2 inline-flex w-fit items-center gap-2 rounded-full bg-deep-green px-6 py-3 text-sm font-semibold text-white transition hover:bg-moss"
+        >
+          Meet the partners <span aria-hidden="true">&rarr;</span>
+        </Link>
+      </SplitFeature>
 
-      {/* Global reach strip */}
-      <section className="border-b border-line bg-cream">
-        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-6 py-10 md:flex-row md:items-center">
-          <p className="text-sm text-ink/70">
-            <strong className="text-deep-green">Now expanding globally</strong> — alongside our
-            work with US CPA firms, we're extending outsourced accounting support to
-            real estate, retail, freelance, and SME clients across the Gulf region.
-          </p>
-          <Link
-            href="/global-reach"
-            className="shrink-0 text-sm font-semibold text-deep-green hover:underline"
-          >
-            See Gulf region services &rarr;
-          </Link>
+      {/* Gulf region — glass panel over photo */}
+      <section className="relative overflow-hidden">
+        <Image
+          src={photos.dubai.src}
+          alt={photos.dubai.alt}
+          fill
+          placeholder="blur"
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-forest/40" />
+        <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-32">
+          <Reveal className="glass max-w-lg rounded-3xl p-8 md:p-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">Now expanding</p>
+            <h2 className="mt-3 font-display text-3xl font-bold leading-tight text-deep-green md:text-4xl">
+              Extending our practice to the Gulf region
+            </h2>
+            <p className="mt-4 leading-relaxed text-ink/70">
+              Alongside our work with US CPA firms, we&apos;re bringing outsourced
+              accounting to real estate, retail, freelance, and SME clients
+              across the Gulf.
+            </p>
+            <Link
+              href="/global-reach"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-deep-green underline-offset-4 hover:underline"
+            >
+              See Gulf region services &rarr;
+            </Link>
+          </Reveal>
         </div>
       </section>
 

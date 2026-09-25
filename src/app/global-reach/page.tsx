@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
+import Reveal from "@/components/Reveal";
+import SplitFeature from "@/components/SplitFeature";
+import { photos } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Global Reach — Gulf Region Services",
@@ -35,42 +38,57 @@ export default function GlobalReachPage() {
         eyebrow="Global Reach"
         title="Now extending our services to the Gulf region"
         desc="Alongside our work supporting US CPA firms, Ardafis Partners is growing a second practice area: direct outsourced accounting support for businesses across the Gulf."
+        image={photos.dubai.src}
+        imageAlt={photos.dubai.alt}
       />
 
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <p className="max-w-3xl text-ink/75">
-          Our partners bring hands-on bookkeeping and accounting experience
-          across exactly the client types common in the Gulf's small-business
-          economy. As this practice area grows, we're focused on four
-          verticals to start:
-        </p>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          {gulfVerticals.map((v) => (
-            <div key={v.title} className="rounded-lg border border-line bg-white p-6 shadow-sm">
-              <h2 className="font-display text-lg font-semibold text-deep-green">{v.title}</h2>
-              <p className="mt-2 text-sm text-ink/70">{v.desc}</p>
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+          <Reveal className="grid gap-6 md:grid-cols-[1.3fr_1fr] md:items-end">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">Where we start</p>
+              <h2 className="mt-4 font-display text-4xl font-bold leading-[1.08] tracking-tight text-deep-green md:text-6xl">
+                Four verticals to begin with
+              </h2>
             </div>
-          ))}
+            <p className="text-lg leading-relaxed text-ink/60">
+              Our partners bring hands-on bookkeeping experience across exactly
+              the client types common in the Gulf&apos;s small-business economy.
+            </p>
+          </Reveal>
+          <div className="mt-14 grid gap-5 sm:grid-cols-2">
+            {gulfVerticals.map((v, i) => (
+              <Reveal
+                key={v.title}
+                delay={(i % 2) * 100}
+                className={`rounded-3xl p-8 transition duration-300 hover:-translate-y-1 md:p-10 ${
+                  i === 0 || i === 3 ? "bg-deep-green text-white" : "bg-cream text-ink"
+                }`}
+              >
+                <span className="text-4xl font-light opacity-40">0{i + 1}</span>
+                <h3 className={`mt-8 font-display text-3xl font-semibold ${i === 0 || i === 3 ? "" : "text-deep-green"}`}>
+                  {v.title}
+                </h3>
+                <p className="mt-3 leading-relaxed opacity-75">{v.desc}</p>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="border-t border-line bg-white">
-        <div className="mx-auto max-w-4xl px-6 py-16">
-          <h2 className="font-display text-2xl font-bold text-deep-green">
-            A newly launched practice area
-          </h2>
-          <p className="mt-4 text-ink/75">
-            Our primary focus remains outsourced support for US CPA firms —
-            that's where most of our current delivery capacity sits. The
-            Gulf practice is a deliberate second track we're building
-            alongside it, not a side afterthought, and we're onboarding
-            early clients directly as we grow it. If you're based in the
-            Gulf and want to be among the first clients on this side of the
-            practice, we'd rather tell you that upfront than pretend
-            otherwise.
-          </p>
-        </div>
-      </section>
+      <SplitFeature image={photos.openOffice} eyebrow="Honest status" title="A newly launched practice area" tone="cream" reverse>
+        <p>
+          Our primary focus remains outsourced support for US CPA firms —
+          that&apos;s where most of our current delivery capacity sits. The Gulf
+          practice is a deliberate second track we&apos;re building alongside it,
+          not an afterthought.
+        </p>
+        <p>
+          We&apos;re onboarding early clients directly as we grow it. If you&apos;re
+          based in the Gulf and want to be among the first, we&apos;d rather tell
+          you that upfront than pretend otherwise.
+        </p>
+      </SplitFeature>
 
       <CTASection
         title="Based in the Gulf and interested in working together?"

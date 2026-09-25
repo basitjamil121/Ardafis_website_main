@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import ComplianceNote from "@/components/ComplianceNote";
 import CTASection from "@/components/CTASection";
+import Reveal from "@/components/Reveal";
+import { photos } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Switch to Ardafis",
@@ -38,27 +40,40 @@ export default function SwitchToArdafisPage() {
     <>
       <PageHero
         eyebrow="Switching Providers"
-        title="Moving work to Ardafis Partners, without disrupting what already works"
+        title="Moving work to Ardafis, without disrupting what already works"
         desc="Most firms considering outsourced support for the first time have the same question: what actually happens to my current setup? Here's the honest answer."
+        image={photos.minMeeting.src}
+        imageAlt={photos.minMeeting.alt}
       />
 
-      <section className="mx-auto max-w-4xl px-6 py-16">
-        <div className="flex flex-col divide-y divide-line">
-          {steps.map((s, i) => (
-            <div key={s.title} className="flex gap-5 py-6">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-deep-green text-sm font-bold text-white">
-                {i + 1}
-              </span>
-              <div>
-                <h2 className="font-display text-lg font-semibold text-deep-green">{s.title}</h2>
-                <p className="mt-2 text-ink/70">{s.desc}</p>
-              </div>
-            </div>
-          ))}
+      <section className="bg-white">
+        <div className="mx-auto grid max-w-6xl gap-14 px-6 py-24 md:py-32 lg:grid-cols-[1fr_1.6fr]">
+          <Reveal className="lg:sticky lg:top-32 lg:self-start">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">The switch</p>
+            <h2 className="mt-4 font-display text-4xl font-bold leading-[1.08] tracking-tight text-deep-green md:text-5xl">
+              Five things that stay true
+            </h2>
+            <p className="mt-5 leading-relaxed text-ink/60">
+              You control the pace. Nothing moves until you&apos;ve seen the scope,
+              the price, and the paperwork.
+            </p>
+          </Reveal>
+          <ol className="border-t border-line">
+            {steps.map((s, i) => (
+              <Reveal as="li" key={s.title} delay={i * 60} className="flex gap-6 border-b border-line py-9">
+                <span className="w-12 shrink-0 text-4xl font-light leading-none text-mist">{i + 1}</span>
+                <div>
+                  <h3 className="font-display text-2xl font-semibold text-deep-green">{s.title}</h3>
+                  <p className="mt-3 leading-relaxed text-ink/70">{s.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </ol>
         </div>
-
-        <div className="mt-10">
-          <ComplianceNote />
+        <div className="mx-auto max-w-6xl px-6 pb-24">
+          <Reveal>
+            <ComplianceNote />
+          </Reveal>
         </div>
       </section>
 

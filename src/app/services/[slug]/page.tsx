@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
 import ComplianceNote from "@/components/ComplianceNote";
+import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
 import ServiceIcon from "@/components/ServiceIcon";
-import BrandMotif from "@/components/BrandMotif";
 import { services } from "@/lib/site-data";
 
 export function generateStaticParams() {
@@ -70,94 +71,104 @@ export default async function ServiceDetailPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <section className="relative overflow-hidden border-b border-line bg-gradient-to-br from-white via-white to-cream">
-        <BrandMotif className="pointer-events-none absolute -right-24 -top-32 h-[420px] w-[420px] md:-right-12 md:-top-40 md:h-[520px] md:w-[520px]" />
-        <div className="relative mx-auto max-w-6xl px-6 py-16 md:py-20">
-          <nav aria-label="Breadcrumb" className="text-xs text-ink/50">
-            <Link href="/" className="hover:text-deep-green">Home</Link>
+      <PageHero
+        eyebrow={service.category}
+        title={service.title}
+        desc={service.heroDesc}
+        breadcrumb={
+          <nav aria-label="Breadcrumb">
+            <Link href="/" className="hover:text-white">Home</Link>
             <span className="mx-1.5">/</span>
-            <Link href="/services" className="hover:text-deep-green">Services</Link>
+            <Link href="/services" className="hover:text-white">Services</Link>
           </nav>
-          <span className="mt-4 flex h-12 w-12 items-center justify-center rounded-full bg-deep-green/10 text-deep-green">
-            <ServiceIcon icon={service.icon} className="h-6 w-6" />
-          </span>
-          <h1 className="mt-4 max-w-3xl font-display text-3xl font-bold leading-tight text-deep-green md:text-4xl">
-            {service.title}
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg text-ink/75">{service.heroDesc}</p>
-        </div>
-      </section>
+        }
+      >
+        <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-white/5 text-mist">
+          <ServiceIcon icon={service.icon} className="h-6 w-6" />
+        </span>
+      </PageHero>
 
-      <section className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[1.5fr_1fr]">
-        <div>
-          <h2 className="font-display text-2xl font-bold text-deep-green">
-            What&apos;s included
-          </h2>
-          <ul className="mt-6 flex flex-col gap-4">
-            {service.bullets.map((b) => (
-              <li key={b} className="flex gap-3 text-ink/75">
-                <span className="mt-1 text-sage">&#10003;</span>
-                <span>{b}</span>
-              </li>
-            ))}
-          </ul>
-
-          {service.tiers && (
-            <div className="mt-10">
-              <h2 className="font-display text-2xl font-bold text-deep-green">
-                Pick the depth your client needs
+      <section className="bg-white">
+        <div className="mx-auto grid max-w-6xl gap-14 px-6 py-24 md:py-28 lg:grid-cols-[1.6fr_1fr]">
+          <div>
+            <Reveal>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">Scope</p>
+              <h2 className="mt-4 font-display text-4xl font-bold tracking-tight text-deep-green md:text-5xl">
+                What&apos;s included
               </h2>
-              <div className="mt-6 flex flex-col gap-4">
-                {service.tiers.map((tier, i) => (
-                  <div key={tier.name} className="rounded-lg border border-line bg-cream p-6 shadow-sm">
-                    <div className="flex items-center gap-3">
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-deep-green text-xs font-bold text-white">
-                        {i + 1}
-                      </span>
-                      <h3 className="font-display text-lg font-semibold text-deep-green">
-                        {tier.name}
-                      </h3>
-                    </div>
-                    <ul className="mt-3 flex flex-col gap-2 pl-10">
-                      {tier.items.map((item) => (
-                        <li key={item} className="list-disc text-sm text-ink/70">
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+            </Reveal>
+            <ul className="mt-10 border-t border-line">
+              {service.bullets.map((b, i) => (
+                <Reveal as="li" key={b} delay={i * 50} className="flex items-baseline gap-6 border-b border-line py-6">
+                  <span className="w-8 shrink-0 text-2xl font-light text-mist">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="text-lg leading-relaxed text-ink/80">{b}</span>
+                </Reveal>
+              ))}
+            </ul>
+
+            {service.tiers && (
+              <div className="mt-20">
+                <Reveal>
+                  <h2 className="font-display text-3xl font-bold tracking-tight text-deep-green md:text-4xl">
+                    Pick the depth your client needs
+                  </h2>
+                </Reveal>
+                <div className="mt-8 grid gap-4">
+                  {service.tiers.map((tier, i) => (
+                    <Reveal
+                      key={tier.name}
+                      delay={i * 80}
+                      className={`rounded-3xl p-7 ${i === service.tiers!.length - 1 ? "bg-deep-green text-white" : "bg-cream"}`}
+                    >
+                      <div className="flex items-center gap-4">
+                        <span className="text-3xl font-light opacity-50">{i + 1}</span>
+                        <h3 className={`font-display text-xl font-semibold ${i === service.tiers!.length - 1 ? "" : "text-deep-green"}`}>
+                          {tier.name}
+                        </h3>
+                      </div>
+                      <ul className="mt-4 flex flex-col gap-2 pl-10">
+                        {tier.items.map((item) => (
+                          <li key={item} className="list-disc text-sm opacity-75">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {service.complianceNote && (
+              <Reveal className="mt-16">
+                <ComplianceNote />
+              </Reveal>
+            )}
+          </div>
+          <div>
+            <Reveal className="rounded-3xl bg-forest p-8 text-white lg:sticky lg:top-32">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-mist">Platforms we use</p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {service.software.map((sw) => (
+                  <span key={sw} className="rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-white/80">
+                    {sw}
+                  </span>
                 ))}
               </div>
-            </div>
-          )}
-
-          {service.complianceNote && (
-            <div className="mt-10">
-              <ComplianceNote />
-            </div>
-          )}
-        </div>
-        <div>
-          <div className="rounded-lg border border-line bg-cream p-6 shadow-sm">
-            <h3 className="font-display text-lg font-semibold text-deep-green">
-              Platforms we use
-            </h3>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {service.software.map((sw) => (
-                <span
-                  key={sw}
-                  className="rounded-full border border-line bg-white px-3 py-1.5 text-xs font-medium text-ink/70"
+              <div className="mt-8 border-t border-white/10 pt-8">
+                <p className="font-display text-xl font-semibold">Scope this for a client</p>
+                <p className="mt-2 text-sm leading-relaxed text-white/60">We reply within one business day.</p>
+                <Link
+                  href="/contact#callback"
+                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-deep-green transition hover:bg-cream"
                 >
-                  {sw}
-                </span>
-              ))}
-            </div>
-            <Link
-              href="/pricing"
-              className="mt-6 inline-block text-sm font-semibold text-deep-green hover:underline"
-            >
-              See pricing for this service &rarr;
-            </Link>
+                  Book a call <span aria-hidden="true">&rarr;</span>
+                </Link>
+                <Link href="/pricing" className="mt-4 block text-sm font-semibold text-white/75 underline-offset-4 hover:text-white hover:underline">
+                  See pricing &rarr;
+                </Link>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>

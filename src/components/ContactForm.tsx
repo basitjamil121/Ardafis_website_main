@@ -61,7 +61,7 @@ export default function ContactForm({ variant = "inquiry" }: { variant?: Variant
 
   if (status === "sent") {
     return (
-      <div className="rounded-lg border border-line bg-white p-6 text-center shadow-sm">
+      <div className="rounded-2xl bg-cream p-8 text-center">
         <p className="font-display text-lg font-semibold text-deep-green">
           Thank you — your message has been received.
         </p>
@@ -76,53 +76,53 @@ export default function ContactForm({ variant = "inquiry" }: { variant?: Variant
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="name" className="text-xs font-medium uppercase tracking-wide text-ink/60">
+          <label htmlFor={`${variant}-name`} className="text-[11px] font-semibold uppercase tracking-[0.15em] text-ink/55">
             Name
           </label>
           <input
-            id="name"
+            id={`${variant}-name`}
             name="name"
             type="text"
             required
-            className="rounded-md border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-deep-green"
+            className="rounded-xl border border-line bg-cream/50 px-4 py-3 text-sm text-ink outline-none transition focus:border-deep-green focus:bg-white focus:ring-4 focus:ring-deep-green/10"
           />
         </div>
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="email" className="text-xs font-medium uppercase tracking-wide text-ink/60">
+          <label htmlFor={`${variant}-email`} className="text-[11px] font-semibold uppercase tracking-[0.15em] text-ink/55">
             Email
           </label>
           <input
-            id="email"
+            id={`${variant}-email`}
             name="email"
             type="email"
             required
-            className="rounded-md border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-deep-green"
+            className="rounded-xl border border-line bg-cream/50 px-4 py-3 text-sm text-ink outline-none transition focus:border-deep-green focus:bg-white focus:ring-4 focus:ring-deep-green/10"
           />
         </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="firm" className="text-xs font-medium uppercase tracking-wide text-ink/60">
+          <label htmlFor={`${variant}-firm`} className="text-[11px] font-semibold uppercase tracking-[0.15em] text-ink/55">
             Firm name (optional)
           </label>
           <input
-            id="firm"
+            id={`${variant}-firm`}
             name="firm"
             type="text"
-            className="rounded-md border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-deep-green"
+            className="rounded-xl border border-line bg-cream/50 px-4 py-3 text-sm text-ink outline-none transition focus:border-deep-green focus:bg-white focus:ring-4 focus:ring-deep-green/10"
           />
         </div>
         {isCallback && (
           <div className="flex flex-col gap-1.5">
-            <label htmlFor="phone" className="text-xs font-medium uppercase tracking-wide text-ink/60">
+            <label htmlFor={`${variant}-phone`} className="text-[11px] font-semibold uppercase tracking-[0.15em] text-ink/55">
               Phone (optional)
             </label>
             <input
-              id="phone"
+              id={`${variant}-phone`}
               name="phone"
               type="tel"
-              className="rounded-md border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-deep-green"
+              className="rounded-xl border border-line bg-cream/50 px-4 py-3 text-sm text-ink outline-none transition focus:border-deep-green focus:bg-white focus:ring-4 focus:ring-deep-green/10"
             />
           </div>
         )}
@@ -130,28 +130,28 @@ export default function ContactForm({ variant = "inquiry" }: { variant?: Variant
 
       {isCallback ? (
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="preferredTime" className="text-xs font-medium uppercase tracking-wide text-ink/60">
+          <label htmlFor={`${variant}-preferredTime`} className="text-[11px] font-semibold uppercase tracking-[0.15em] text-ink/55">
             Preferred day &amp; time (your time zone)
           </label>
           <input
-            id="preferredTime"
+            id={`${variant}-preferredTime`}
             name="preferredTime"
             type="text"
             placeholder="e.g. Tuesday afternoon, EST"
-            className="rounded-md border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-deep-green"
+            className="rounded-xl border border-line bg-cream/50 px-4 py-3 text-sm text-ink outline-none transition focus:border-deep-green focus:bg-white focus:ring-4 focus:ring-deep-green/10"
           />
         </div>
       ) : (
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="message" className="text-xs font-medium uppercase tracking-wide text-ink/60">
+          <label htmlFor={`${variant}-message`} className="text-[11px] font-semibold uppercase tracking-[0.15em] text-ink/55">
             Message
           </label>
           <textarea
-            id="message"
+            id={`${variant}-message`}
             name="message"
             rows={4}
             required
-            className="rounded-md border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-deep-green"
+            className="rounded-xl border border-line bg-cream/50 px-4 py-3 text-sm text-ink outline-none transition focus:border-deep-green focus:bg-white focus:ring-4 focus:ring-deep-green/10"
           />
         </div>
       )}
@@ -161,7 +161,7 @@ export default function ContactForm({ variant = "inquiry" }: { variant?: Variant
       <button
         type="submit"
         disabled={status === "sending"}
-        className="mt-2 rounded-md bg-deep-green px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-deep-green/90 disabled:opacity-60"
+        className="mt-2 rounded-full bg-deep-green px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-moss disabled:opacity-60"
       >
         {status === "sending" ? "Sending…" : isCallback ? "Request a call" : "Send message"}
       </button>

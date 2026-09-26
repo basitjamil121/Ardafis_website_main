@@ -5,7 +5,8 @@ import ComplianceNote from "@/components/ComplianceNote";
 import PlatformLogos from "@/components/PlatformLogos";
 import Reveal from "@/components/Reveal";
 import ServiceGroups from "@/components/ServiceGroups";
-import WorkflowPipeline from "@/components/WorkflowPipeline";
+import FlowDiagram from "@/components/FlowDiagram";
+import { homeFlow } from "@/lib/flows";
 import { photos } from "@/lib/images";
 
 export const metadata: Metadata = {
@@ -32,7 +33,7 @@ export default function ServicesPage() {
           </Reveal>
           <ServiceGroups />
           <div className="mt-24">
-            <WorkflowPipeline />
+            <FlowDiagram {...homeFlow} />
           </div>
         </div>
       </section>

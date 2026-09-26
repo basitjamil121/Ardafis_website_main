@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import ComplianceNote from "@/components/ComplianceNote";
 import CTASection from "@/components/CTASection";
+import FlowDiagram from "@/components/FlowDiagram";
 import Reveal from "@/components/Reveal";
+import { switchFlow } from "@/lib/flows";
 import { photos } from "@/lib/images";
 
 export const metadata: Metadata = {
@@ -70,7 +72,8 @@ export default function SwitchToArdafisPage() {
             ))}
           </ol>
         </div>
-        <div className="mx-auto max-w-6xl px-6 pb-24">
+        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 pb-24 md:pb-32">
+          <FlowDiagram {...switchFlow} />
           <Reveal>
             <ComplianceNote />
           </Reveal>

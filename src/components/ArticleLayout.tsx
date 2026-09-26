@@ -1,6 +1,7 @@
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
 import PageHero from "@/components/PageHero";
+import ReadingProgress from "@/components/ReadingProgress";
 
 type ArticleLayoutProps = {
   title: string;
@@ -62,7 +63,8 @@ export default function ArticleLayout({ title, date, slug, excerpt, children }: 
           </nav>
         }
       />
-      <article className="bg-white">
+      <ReadingProgress targetId="article-body" />
+      <article id="article-body" className="bg-white">
         <div className="mx-auto max-w-3xl px-6 py-20 md:py-24">
           <div className="flex flex-col gap-6 text-lg leading-relaxed text-ink/80 [&_h2]:mt-10 [&_h2]:font-display [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:tracking-tight [&_h2]:text-deep-green [&_li]:ml-5 [&_li]:list-disc [&_strong]:text-deep-green [&_ul]:flex [&_ul]:flex-col [&_ul]:gap-2">
             {children}

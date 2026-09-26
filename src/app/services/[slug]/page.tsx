@@ -3,10 +3,22 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
 import ComplianceNote from "@/components/ComplianceNote";
+import FlowDiagram from "@/components/FlowDiagram";
+import { CloseChecklistMockup, PnLMockup, ReconMockup } from "@/components/ProductMockups";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import ServiceIcon from "@/components/ServiceIcon";
+import { serviceFlows } from "@/lib/flows";
 import { services } from "@/lib/site-data";
+
+// Live sample shown in the sidebar where one genuinely matches the service.
+const sampleFor: Record<string, React.ReactNode> = {
+  bookkeeping: <ReconMockup live delay={500} />,
+  "payables-receivables": <ReconMockup live delay={500} />,
+  "ecommerce-accounting": <ReconMockup live delay={500} />,
+  "advisory-reporting": <PnLMockup live delay={500} />,
+  "entity-setup-software-migration": <CloseChecklistMockup live delay={500} />,
+};
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -146,35 +158,43 @@ export default async function ServiceDetailPage({
             )}
           </div>
           <div>
-            <Reveal className="rounded-3xl bg-forest p-8 text-white lg:sticky lg:top-32">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-mist">Platforms we use</p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {service.software.map((sw) => (
-                  <span key={sw} className="rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-white/80">
-                    {sw}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-8 border-t border-white/10 pt-8">
-                <p className="font-display text-xl font-semibold">Scope this for a client</p>
-                <p className="mt-2 text-sm leading-relaxed text-white/60">We reply within one business day.</p>
-                <Link
-                  href="/contact#callback"
-                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-deep-green transition hover:bg-cream"
-                >
-                  Book a call <span aria-hidden="true">&rarr;</span>
-                </Link>
-                <Link href="/pricing" className="mt-4 block text-sm font-semibold text-white/75 underline-offset-4 hover:text-white hover:underline">
-                  See pricing &rarr;
-                </Link>
-              </div>
-            </Reveal>
+            <div className="flex flex-col gap-5 lg:sticky lg:top-32">
+              {sampleFor[service.slug] && <Reveal>{sampleFor[service.slug]}</Reveal>}
+              <Reveal className="rounded-3xl bg-forest p-8 text-white">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-mist">Platforms we use</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {service.software.map((sw) => (
+                    <span key={sw} className="rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-white/80">
+                      {sw}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-8 border-t border-white/10 pt-8">
+                  <p className="font-display text-xl font-semibold">Scope this for a client</p>
+                  <p className="mt-2 text-sm leading-relaxed text-white/60">We reply within one business day.</p>
+                  <Link
+                    href="/contact#callback"
+                    className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-deep-green transition hover:bg-cream"
+                  >
+                    Book a call <span aria-hidden="true">&rarr;</span>
+                  </Link>
+                  <Link href="/pricing" className="mt-4 block text-sm font-semibold text-white/75 underline-offset-4 hover:text-white hover:underline">
+                    See pricing &rarr;
+                  </Link>
+                </div>
+              </Reveal>
+            </div>
           </div>
         </div>
+        {serviceFlows[service.slug] && (
+          <div className="mx-auto max-w-6xl px-6 pb-24 md:pb-28">
+            <FlowDiagram {...serviceFlows[service.slug]} />
+          </div>
+        )}
       </section>
 
       <CTASection
-        title={`Need help with ${service.title.toLowerCase()}?`}
+        title={`Need help with ${service.title}?`}
         desc="Tell us about the workload and we'll scope it within one business day."
       />
     </>

@@ -117,7 +117,8 @@ export function CloseChecklistMockup({ live = false, delay = 0 }: { live?: boole
 
 const bars = [42, 55, 48, 63, 58, 71];
 
-export function PnLMockup() {
+// live: bars rise in sequence once revealed.
+export function PnLMockup({ live = false, delay = 0 }: { live?: boolean; delay?: number }) {
   return (
     <div className="rounded-2xl bg-white p-5 text-ink shadow-xl shadow-black/10">
       <div className="flex items-start justify-between gap-3">
@@ -131,8 +132,8 @@ export function PnLMockup() {
         {bars.map((h, i) => (
           <div
             key={i}
-            className={`flex-1 rounded-t-md ${i === bars.length - 1 ? "bg-deep-green" : "bg-mist/60"}`}
-            style={{ height: `${h}%` }}
+            className={`flex-1 origin-bottom rounded-t-md ${i === bars.length - 1 ? "bg-deep-green" : "bg-mist/60"} ${live ? "bar-rise" : ""}`}
+            style={{ height: `${h}%`, ...(live ? { animationDelay: `${delay + i * 140}ms` } : {}) }}
           />
         ))}
       </div>
@@ -149,6 +150,53 @@ export function PnLMockup() {
           <p className="text-ink/45">Cash runway</p>
           <p className="mt-0.5 font-semibold text-ink/85">7.5 mo</p>
         </div>
+      </div>
+    </div>
+  );
+}
+
+const accessItems = [
+  "Mutual NDA signed",
+  "§7216 consent on file",
+  "Invited through your platform's user roles",
+  "Scope: this client only",
+];
+
+// Security: an access request that only proceeds once each safeguard is in place.
+export function AccessMockup({ live = false, delay = 0 }: { live?: boolean; delay?: number }) {
+  const at = (i: number) => (live ? { animationDelay: `${delay + i * 380}ms` } : undefined);
+  return (
+    <div className="relative overflow-hidden rounded-2xl bg-white p-5 text-ink shadow-xl shadow-black/10">
+      {live && (
+        <span
+          aria-hidden="true"
+          className="scan-sweep pointer-events-none absolute inset-x-0 top-16 h-10 bg-gradient-to-b from-transparent via-mist/35 to-transparent"
+        />
+      )}
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-xs font-semibold text-deep-green">Access request</p>
+          <p className="mt-0.5 text-[11px] text-ink/50">Client A · Property management</p>
+        </div>
+        <SampleTag />
+      </div>
+      <ul className="mt-4 divide-y divide-line text-[12px]">
+        {accessItems.map((item, i) => (
+          <li key={item} className={`flex items-center justify-between gap-3 py-2.5 ${live ? "tick-row" : ""}`} style={at(i)}>
+            <span className="text-ink/75">{item}</span>
+            <Check className={live ? "tick-pop" : ""} style={live ? { animationDelay: `${delay + i * 380 + 250}ms` } : undefined} />
+          </li>
+        ))}
+      </ul>
+      <div
+        className={`mt-3 flex items-center justify-between rounded-xl bg-deep-green px-3 py-2.5 text-[12px] text-white ${live ? "tick-row" : ""}`}
+        style={at(accessItems.length)}
+      >
+        <span className="flex items-center gap-2">
+          <span className="node-pulse h-1.5 w-1.5 rounded-full bg-mist" />
+          Access granted
+        </span>
+        <span className="text-white/60">Shared logins: none</span>
       </div>
     </div>
   );

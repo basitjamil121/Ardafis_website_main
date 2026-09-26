@@ -86,7 +86,7 @@ export default function DeliverablesBento() {
               title="Reconciled to the penny"
               desc="Bank, card, and merchant accounts matched line by line, with exceptions flagged for you."
             >
-              <ReconMockup />
+              <ReconMockup live delay={400} />
             </MockupTile>
           </Reveal>
           <Reveal className="md:col-span-2" delay={0}>
@@ -94,7 +94,7 @@ export default function DeliverablesBento() {
               title="A documented close"
               desc="A checklist built around your firm's standards, so review is fast and nothing is skipped."
             >
-              <CloseChecklistMockup />
+              <CloseChecklistMockup live delay={400} />
             </MockupTile>
           </Reveal>
           <Reveal className="md:col-span-2" delay={100}>
@@ -113,7 +113,7 @@ export default function DeliverablesBento() {
               title="Reports clients understand"
               desc="Management reporting and KPIs for advisory-tier clients, ready to send under your firm's name."
             >
-              <PnLMockup />
+              <PnLMockup live delay={500} />
             </MockupTile>
           </Reveal>
         </div>

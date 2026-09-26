@@ -17,8 +17,9 @@ import HeroMockups from "@/components/HeroMockups";
 import NodeField from "@/components/NodeField";
 import Reveal from "@/components/Reveal";
 import ServiceGroups from "@/components/ServiceGroups";
-import WorkflowPipeline from "@/components/WorkflowPipeline";
+import FlowDiagram from "@/components/FlowDiagram";
 import SplitFeature from "@/components/SplitFeature";
+import { homeFlow } from "@/lib/flows";
 import { photos } from "@/lib/images";
 
 export const metadata: Metadata = {
@@ -108,7 +109,7 @@ export default function Home() {
             </p>
           </Reveal>
           <div className="mt-14">
-            <WorkflowPipeline />
+            <FlowDiagram {...homeFlow} />
           </div>
           <div className="mt-20">
             <ServiceGroups />

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
+import FlowDiagram from "@/components/FlowDiagram";
 import Reveal from "@/components/Reveal";
 import SplitFeature from "@/components/SplitFeature";
+import { gulfFlow } from "@/lib/flows";
 import { photos } from "@/lib/images";
 
 export const metadata: Metadata = {
@@ -72,6 +74,9 @@ export default function GlobalReachPage() {
                 <p className="mt-3 leading-relaxed opacity-75">{v.desc}</p>
               </Reveal>
             ))}
+          </div>
+          <div className="mt-6">
+            <FlowDiagram {...gulfFlow} />
           </div>
         </div>
       </section>

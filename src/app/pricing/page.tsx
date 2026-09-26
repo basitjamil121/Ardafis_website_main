@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import CostComparison from "@/components/CostComparison";
 import CTASection from "@/components/CTASection";
+import FlowDiagram from "@/components/FlowDiagram";
 import ComplianceNote from "@/components/ComplianceNote";
 import PricingCards from "@/components/PricingCards";
 import Reveal from "@/components/Reveal";
+import { pricingFlow } from "@/lib/flows";
 import { photos } from "@/lib/images";
 
 export const metadata: Metadata = {
@@ -65,6 +67,9 @@ export default function PricingPage() {
       <section className="bg-cream">
         <div className="mx-auto max-w-6xl px-6 py-24 md:py-28">
           <PricingCards />
+          <div className="mt-6">
+            <FlowDiagram {...pricingFlow} />
+          </div>
         </div>
       </section>
 

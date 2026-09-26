@@ -60,14 +60,30 @@ export default function ContactForm({ variant = "inquiry" }: { variant?: Variant
   }
 
   if (status === "sent") {
+    const next = isCallback
+      ? ["Request received", "A partner confirms a time within one business day", "We call you at the time you chose"]
+      : ["Message received", "A partner replies within one business day", "We set up a discovery call if it helps"];
     return (
-      <div className="rounded-2xl bg-cream p-8 text-center">
-        <p className="font-display text-lg font-semibold text-deep-green">
-          Thank you — your message has been received.
+      <div className="rounded-2xl bg-cream p-8" role="status">
+        <span className="tick-pop flex h-14 w-14 items-center justify-center rounded-full bg-deep-green text-white">
+          <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M5 13l4 4L19 7" />
+          </svg>
+        </span>
+        <p className="mt-6 font-display text-2xl font-semibold text-deep-green">
+          {isCallback ? "Thanks — we’ll call you." : "Thank you — message received."}
         </p>
-        <p className="mt-2 text-sm text-ink/70">
-          We&apos;ll get back to you within one business day.
-        </p>
+        <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-sage">What happens next</p>
+        <ol className="relative mt-4 flex flex-col gap-4 border-l border-deep-green/15 pl-6">
+          {next.map((step, i) => (
+            <li key={step} className="tick-row relative text-sm text-ink/75" style={{ animationDelay: `${300 + i * 250}ms` }}>
+              <span
+                className={`absolute -left-[31px] top-0.5 h-3 w-3 rounded-full border-2 border-cream ${i === 0 ? "bg-deep-green" : "bg-mist"}`}
+              />
+              {step}
+            </li>
+          ))}
+        </ol>
       </div>
     );
   }
@@ -161,9 +177,19 @@ export default function ContactForm({ variant = "inquiry" }: { variant?: Variant
       <button
         type="submit"
         disabled={status === "sending"}
-        className="mt-2 rounded-full bg-deep-green px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-moss disabled:opacity-60"
+        className="group mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-deep-green px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-moss disabled:opacity-70"
       >
-        {status === "sending" ? "Sending…" : isCallback ? "Request a call" : "Send message"}
+        {status === "sending" ? (
+          <>
+            <span aria-hidden="true" className="h-4 w-4 rounded-full border-2 border-white/30 border-t-white motion-safe:animate-spin" />
+            Sending…
+          </>
+        ) : (
+          <>
+            {isCallback ? "Request a call" : "Send message"}
+            <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">&rarr;</span>
+          </>
+        )}
       </button>
     </form>
   );

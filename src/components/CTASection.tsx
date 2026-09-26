@@ -15,7 +15,13 @@ export default function CTASection({
     <section className="relative overflow-hidden text-white">
       <Aurora />
       <Reveal className="relative z-10 mx-auto max-w-6xl px-6 py-24 md:py-32">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-mist">Next step</p>
+        <p className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.25em] text-mist">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-mist opacity-60 motion-safe:animate-ping" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-mist" />
+          </span>
+          Partners reply within one business day
+        </p>
         <h2 className="mt-5 max-w-3xl font-display text-4xl font-bold leading-[1.08] tracking-tight md:text-6xl">
           {title}
         </h2>

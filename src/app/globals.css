@@ -184,6 +184,14 @@ body {
   to { opacity: 1; transform: scale(1); }
 }
 
+.bar-rise {
+  animation: bar-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes bar-rise {
+  from { transform: scaleY(0); }
+}
+
 @keyframes bar-fill {
   from { width: 0; }
 }
@@ -193,6 +201,11 @@ body {
   15% { opacity: 1; }
   55% { transform: translateY(260px); opacity: 0; }
   100% { transform: translateY(260px); opacity: 0; }
+}
+
+/* Live mockups placed below the fold hold their animation until revealed */
+.reveal:not([data-visible="true"]) :is(.tick-row, .tick-pop, .bar-fill, .bar-rise, .scan-sweep) {
+  animation-play-state: paused;
 }
 
 /* Icons inside a .reveal block pop in (with per-item delay) once the block is shown */
@@ -246,6 +259,7 @@ body {
   .tick-row,
   .tick-pop,
   .bar-fill,
+  .bar-rise,
   .node-pulse,
   .flow-dash {
     animation: none;

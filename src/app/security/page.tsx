@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
 import ComplianceNote from "@/components/ComplianceNote";
+import FlowDiagram from "@/components/FlowDiagram";
+import { AccessMockup } from "@/components/ProductMockups";
 import Reveal from "@/components/Reveal";
 import SplitFeature from "@/components/SplitFeature";
+import { securityFlow } from "@/lib/flows";
 import { photos } from "@/lib/images";
 
 export const metadata: Metadata = {
@@ -48,27 +51,37 @@ export default function SecurityPage() {
       />
 
       <section className="bg-white">
-        <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
-          <Reveal className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">Our practices</p>
-            <h2 className="mt-4 font-display text-4xl font-bold leading-[1.08] tracking-tight text-deep-green md:text-6xl">
-              Five commitments, in writing
-            </h2>
-          </Reveal>
-          <ol className="mt-14 border-t border-line">
+        <div className="mx-auto grid max-w-6xl gap-14 px-6 py-24 md:py-32 lg:grid-cols-[1fr_1.35fr]">
+          <div>
+            <Reveal className="lg:sticky lg:top-32">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sage">Our practices</p>
+              <h2 className="mt-4 font-display text-4xl font-bold leading-[1.08] tracking-tight text-deep-green md:text-5xl">
+                Five commitments, in writing
+              </h2>
+              <div className="mt-10 max-w-sm">
+                <AccessMockup live delay={500} />
+              </div>
+            </Reveal>
+          </div>
+          <ol className="border-t border-line">
             {practices.map((p, i) => (
               <Reveal
                 as="li"
                 key={p.title}
                 delay={i * 60}
-                className="grid gap-4 border-b border-line py-9 md:grid-cols-[6rem_1.2fr_1.4fr] md:items-baseline md:gap-10"
+                className="grid gap-3 border-b border-line py-9 md:grid-cols-[4.5rem_1fr] md:gap-6"
               >
                 <span className="text-4xl font-light text-mist">0{i + 1}</span>
-                <h3 className="font-display text-2xl font-semibold text-deep-green md:text-3xl">{p.title}</h3>
-                <p className="leading-relaxed text-ink/70">{p.desc}</p>
+                <div>
+                  <h3 className="font-display text-2xl font-semibold text-deep-green">{p.title}</h3>
+                  <p className="mt-2 leading-relaxed text-ink/70">{p.desc}</p>
+                </div>
               </Reveal>
             ))}
           </ol>
+        </div>
+        <div className="mx-auto max-w-6xl px-6 pb-24 md:pb-32">
+          <FlowDiagram {...securityFlow} />
         </div>
       </section>
 

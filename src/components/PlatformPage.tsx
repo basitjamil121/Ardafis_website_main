@@ -1,8 +1,10 @@
 import Link from "next/link";
 import CredentialBadges from "@/components/CredentialBadges";
 import CTASection from "@/components/CTASection";
+import FlowDiagram from "@/components/FlowDiagram";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
+import { platformFlows } from "@/lib/flows";
 import { platformIconPaths } from "@/lib/platform-logos";
 
 type PlatformPageProps = {
@@ -67,6 +69,9 @@ export default function PlatformPage({ platform, icon, title, intro, capabilitie
               ))}
             </ul>
           </Reveal>
+        </div>
+        <div className="mx-auto max-w-6xl px-6 pb-24 md:pb-28">
+          <FlowDiagram {...platformFlows[icon as "quickbooks" | "xero"]} />
         </div>
       </section>
 

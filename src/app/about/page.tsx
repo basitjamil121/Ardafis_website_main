@@ -3,8 +3,10 @@ import PageHero from "@/components/PageHero";
 import BigStats from "@/components/BigStats";
 import CredentialBadges from "@/components/CredentialBadges";
 import CTASection from "@/components/CTASection";
+import FlowDiagram from "@/components/FlowDiagram";
 import Reveal from "@/components/Reveal";
 import SplitFeature from "@/components/SplitFeature";
+import { staffingFlow } from "@/lib/flows";
 import { photos } from "@/lib/images";
 
 export const metadata: Metadata = {
@@ -80,6 +82,9 @@ export default function AboutPage() {
                 <p className="leading-relaxed text-ink/70">{member.bio}</p>
               </Reveal>
             ))}
+          </div>
+          <div className="mt-16">
+            <FlowDiagram {...staffingFlow} />
           </div>
         </div>
       </section>

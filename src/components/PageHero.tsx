@@ -1,5 +1,6 @@
 import Image, { type StaticImageData } from "next/image";
 import Aurora from "@/components/Aurora";
+import NodeField from "@/components/NodeField";
 
 type PageHeroProps = {
   eyebrow: string;
@@ -26,6 +27,7 @@ export default function PageHero({
     <>
       <section className={`relative overflow-hidden text-white ${image ? "pb-32 md:pb-44" : ""}`}>
         <Aurora />
+        <NodeField />
         <div className="relative z-10 mx-auto max-w-6xl px-6 pb-20 pt-36 md:pb-24 md:pt-48">
           {breadcrumb && <div className="enter mb-6 text-xs text-white/60">{breadcrumb}</div>}
           <p className="enter text-xs font-semibold uppercase tracking-[0.3em] text-mist">

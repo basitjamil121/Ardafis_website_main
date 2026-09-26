@@ -48,6 +48,7 @@ export default function SecurityPage() {
         desc="As a new firm, we'd rather tell you exactly what we do and don't have in place than overstate it. Here's the honest picture."
         image={photos.darkDesk.src}
         imageAlt={photos.darkDesk.alt}
+        visual={<AccessMockup live delay={900} />}
       />
 
       <section className="bg-white">
@@ -58,9 +59,9 @@ export default function SecurityPage() {
               <h2 className="mt-4 font-display text-4xl font-bold leading-[1.08] tracking-tight text-deep-green md:text-5xl">
                 Five commitments, in writing
               </h2>
-              <div className="mt-10 max-w-sm">
-                <AccessMockup live delay={500} />
-              </div>
+              <p className="mt-5 max-w-sm leading-relaxed text-ink/60">
+                Every one of these is in place before we touch a single client file.
+              </p>
             </Reveal>
           </div>
           <ol className="border-t border-line">

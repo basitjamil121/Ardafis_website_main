@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
+import { ScopeMockup } from "@/components/ProductMockups";
 import CostComparison from "@/components/CostComparison";
 import CTASection from "@/components/CTASection";
 import FlowDiagram from "@/components/FlowDiagram";
@@ -62,6 +63,7 @@ export default function PricingPage() {
         desc="No dedicated-staff lock-in required to get started — pay for what you need, scale up as the relationship grows."
         image={photos.calcLaptop.src}
         imageAlt={photos.calcLaptop.alt}
+        visual={<ScopeMockup live delay={900} />}
       />
 
       <section className="bg-cream">

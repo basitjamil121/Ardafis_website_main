@@ -201,3 +201,43 @@ export function AccessMockup({ live = false, delay = 0 }: { live?: boolean; dela
     </div>
   );
 }
+
+const scopeLines = [
+  { label: "Model", value: "Per-client bookkeeping" },
+  { label: "Clients", value: "8" },
+  { label: "Rate", value: "$180–$350 / client / mo" },
+  { label: "Billing", value: "Monthly, no staff contract" },
+];
+
+// Pricing: a scope summary agreed before work starts.
+export function ScopeMockup({ live = false, delay = 0 }: { live?: boolean; delay?: number }) {
+  const at = (i: number) => (live ? { animationDelay: `${delay + i * 320}ms` } : undefined);
+  return (
+    <div className="rounded-2xl bg-white p-5 text-ink shadow-xl shadow-black/10">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-xs font-semibold text-deep-green">Engagement scope</p>
+          <p className="mt-0.5 text-[11px] text-ink/50">Agreed before work starts</p>
+        </div>
+        <SampleTag />
+      </div>
+      <dl className="mt-4 divide-y divide-line text-[12px]">
+        {scopeLines.map((l, i) => (
+          <div key={l.label} className={`flex items-center justify-between gap-3 py-2.5 ${live ? "tick-row" : ""}`} style={at(i)}>
+            <dt className="text-ink/50">{l.label}</dt>
+            <dd className="text-right font-medium text-ink/80">{l.value}</dd>
+          </div>
+        ))}
+      </dl>
+      <div
+        className={`mt-3 flex items-center justify-between rounded-xl bg-deep-green px-3 py-2.5 text-[12px] text-white ${live ? "tick-row" : ""}`}
+        style={at(scopeLines.length)}
+      >
+        <span className="flex items-center gap-2">
+          <span className="node-pulse h-1.5 w-1.5 rounded-full bg-mist" />
+          Scale up or down any month
+        </span>
+      </div>
+    </div>
+  );
+}

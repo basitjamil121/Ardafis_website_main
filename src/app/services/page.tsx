@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
+import { ReconMockup } from "@/components/ProductMockups";
 import CTASection from "@/components/CTASection";
 import ComplianceNote from "@/components/ComplianceNote";
 import PlatformLogos from "@/components/PlatformLogos";
@@ -25,6 +26,7 @@ export default function ServicesPage() {
         desc="Pick a single service or hand off the full workload — every engagement runs inside the software your firm already uses."
         image={photos.meetingRoom.src}
         imageAlt={photos.meetingRoom.alt}
+        visual={<ReconMockup live delay={900} />}
       />
       <section className="bg-white">
         <div className="mx-auto max-w-6xl px-6 py-24 md:py-28">

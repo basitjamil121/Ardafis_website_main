@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import { CloseChecklistMockup } from "@/components/ProductMockups";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import FirstThirtyDays from "@/components/FirstThirtyDays";
 import CTASection from "@/components/CTASection";
@@ -23,6 +24,7 @@ export default function HowItWorksPage() {
         desc="No long procurement cycle, no dedicated-staff contract to sign before you've even tested the fit."
         image={photos.ipadMeeting.src}
         imageAlt={photos.ipadMeeting.alt}
+        visual={<CloseChecklistMockup live delay={900} />}
       />
       <HowItWorksSection />
       <FirstThirtyDays showLink={false} />

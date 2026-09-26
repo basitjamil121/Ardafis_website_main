@@ -133,6 +133,26 @@ body {
   transform: none;
 }
 
+/* Hero photo that dissolves into the gradient: faded at the bottom on phones,
+   and at the left and bottom edges on large screens */
+.hero-photo {
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 45%);
+  mask-image: linear-gradient(to top, transparent 0%, black 45%);
+}
+
+@media (min-width: 1024px) {
+  .hero-photo {
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, black 55%),
+      linear-gradient(to top, transparent 0%, black 35%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to right, transparent 0%, black 55%),
+      linear-gradient(to top, transparent 0%, black 35%);
+    mask-composite: intersect;
+  }
+}
+
 /* Glass surface used for cards laid over photos and the floating nav */
 .glass {
   background: rgb(255 255 255 / 0.84);

@@ -9,9 +9,9 @@ function SampleTag() {
   );
 }
 
-function Check() {
+function Check({ className = "", style }: { className?: string; style?: React.CSSProperties }) {
   return (
-    <svg viewBox="0 0 16 16" className="h-4 w-4 shrink-0 text-moss" fill="none" aria-hidden="true">
+    <svg viewBox="0 0 16 16" className={`h-4 w-4 shrink-0 text-moss ${className}`} style={style} fill="none" aria-hidden="true">
       <circle cx="8" cy="8" r="7.25" stroke="currentColor" strokeWidth="1.5" />
       <path d="M5 8.3l2 2 4-4.3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
@@ -25,9 +25,17 @@ const reconRows = [
   { date: "09/18", desc: "Client deposit", amount: "8,400.00" },
 ];
 
-export function ReconMockup() {
+// live: rows tick in one by one and a scan line sweeps the card (used in the hero).
+export function ReconMockup({ live = false, delay = 0 }: { live?: boolean; delay?: number }) {
+  const at = (i: number) => (live ? { animationDelay: `${delay + i * 320}ms` } : undefined);
   return (
-    <div className="rounded-2xl bg-white p-5 text-ink shadow-xl shadow-black/10">
+    <div className="relative overflow-hidden rounded-2xl bg-white p-5 text-ink shadow-xl shadow-black/10">
+      {live && (
+        <span
+          aria-hidden="true"
+          className="scan-sweep pointer-events-none absolute inset-x-0 top-16 h-10 bg-gradient-to-b from-transparent via-mist/35 to-transparent"
+        />
+      )}
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-xs font-semibold text-deep-green">Bank reconciliation</p>
@@ -36,19 +44,28 @@ export function ReconMockup() {
         <SampleTag />
       </div>
       <div className="mt-4 divide-y divide-line text-[12px] tabular-nums">
-        {reconRows.map((r) => (
-          <div key={r.desc} className="flex items-center gap-3 py-2">
+        {reconRows.map((r, i) => (
+          <div key={r.desc} className={`flex items-center gap-3 py-2 ${live ? "tick-row" : ""}`} style={at(i)}>
             <span className="w-10 text-ink/45">{r.date}</span>
             <span className="flex-1 text-ink/75">{r.desc}</span>
             <span className="text-ink/80">{r.amount}</span>
-            <Check />
+            <Check className={live ? "tick-pop" : ""} style={live ? { animationDelay: `${delay + i * 320 + 250}ms` } : undefined} />
           </div>
         ))}
       </div>
-      <div className="mt-3 flex items-center justify-between rounded-xl bg-cream px-3 py-2.5 text-[12px]">
+      <div
+        className={`mt-3 flex items-center justify-between rounded-xl bg-cream px-3 py-2.5 text-[12px] ${live ? "tick-row" : ""}`}
+        style={at(reconRows.length)}
+      >
         <span className="text-ink/60">Unreconciled difference</span>
         <span className="font-semibold text-moss">$0.00</span>
       </div>
+      {live && (
+        <p className="tick-row mt-3 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-sage" style={at(reconRows.length + 1)}>
+          <span className="node-pulse h-1.5 w-1.5 rounded-full bg-moss" />
+          Auto-matched · partner reviewed
+        </p>
+      )}
     </div>
   );
 }
@@ -61,8 +78,10 @@ const closeItems = [
   { label: "Variance notes for CPA review", done: false },
 ];
 
-export function CloseChecklistMockup() {
+// live: progress bar fills and items check off in sequence (used in the hero).
+export function CloseChecklistMockup({ live = false, delay = 0 }: { live?: boolean; delay?: number }) {
   const done = closeItems.filter((i) => i.done).length;
+  const at = (i: number) => (live ? { animationDelay: `${delay + i * 280}ms` } : undefined);
   return (
     <div className="rounded-2xl bg-white p-5 text-ink shadow-xl shadow-black/10">
       <div className="flex items-start justify-between gap-3">
@@ -75,13 +94,16 @@ export function CloseChecklistMockup() {
         <SampleTag />
       </div>
       <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-line">
-        <div className="h-full rounded-full bg-moss" style={{ width: `${(done / closeItems.length) * 100}%` }} />
+        <div
+          className={`h-full rounded-full bg-moss ${live ? "bar-fill" : ""}`}
+          style={{ width: `${(done / closeItems.length) * 100}%`, ...(live ? { animationDelay: `${delay}ms` } : {}) }}
+        />
       </div>
       <ul className="mt-4 flex flex-col gap-2.5 text-[12px]">
-        {closeItems.map((item) => (
-          <li key={item.label} className="flex items-center gap-2.5">
+        {closeItems.map((item, i) => (
+          <li key={item.label} className={`flex items-center gap-2.5 ${live ? "tick-row" : ""}`} style={at(i)}>
             {item.done ? (
-              <Check />
+              <Check className={live ? "tick-pop" : ""} style={live ? { animationDelay: `${delay + i * 280 + 200}ms` } : undefined} />
             ) : (
               <span className="h-4 w-4 shrink-0 rounded-full border-[1.5px] border-dashed border-sage" />
             )}

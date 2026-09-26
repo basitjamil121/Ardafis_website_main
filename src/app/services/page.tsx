@@ -4,7 +4,8 @@ import CTASection from "@/components/CTASection";
 import ComplianceNote from "@/components/ComplianceNote";
 import PlatformLogos from "@/components/PlatformLogos";
 import Reveal from "@/components/Reveal";
-import ServiceRows from "@/components/ServiceRows";
+import ServiceGroups from "@/components/ServiceGroups";
+import WorkflowPipeline from "@/components/WorkflowPipeline";
 import { photos } from "@/lib/images";
 
 export const metadata: Metadata = {
@@ -29,7 +30,10 @@ export default function ServicesPage() {
           <Reveal className="mb-14">
             <ComplianceNote />
           </Reveal>
-          <ServiceRows />
+          <ServiceGroups />
+          <div className="mt-24">
+            <WorkflowPipeline />
+          </div>
         </div>
       </section>
       <PlatformLogos />

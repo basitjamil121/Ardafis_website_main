@@ -12,9 +12,12 @@ import FirstThirtyDays from "@/components/FirstThirtyDays";
 import IndustryFan from "@/components/IndustryFan";
 import PlatformLogos from "@/components/PlatformLogos";
 import PricingCards from "@/components/PricingCards";
-import { CloseChecklistMockup, ReconMockup } from "@/components/ProductMockups";
+import ExpandingBand from "@/components/ExpandingBand";
+import HeroMockups from "@/components/HeroMockups";
+import NodeField from "@/components/NodeField";
 import Reveal from "@/components/Reveal";
-import ServiceRows from "@/components/ServiceRows";
+import ServiceGroups from "@/components/ServiceGroups";
+import WorkflowPipeline from "@/components/WorkflowPipeline";
 import SplitFeature from "@/components/SplitFeature";
 import { photos } from "@/lib/images";
 
@@ -28,6 +31,7 @@ export default function Home() {
       {/* Hero */}
       <section className="relative overflow-hidden pb-40 text-white md:pb-56">
         <Aurora />
+        <NodeField />
         <div className="relative z-10 mx-auto grid max-w-6xl gap-12 px-6 pt-36 md:pt-48 lg:grid-cols-[1.35fr_1fr] lg:items-center">
           <div>
             <p className="enter inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.25em] text-mist">
@@ -72,38 +76,19 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Floating sample deliverables */}
-          <div className="relative hidden h-[460px] lg:block" aria-hidden="true">
-            <div className="enter absolute right-0 top-0 w-[330px] rotate-2" style={{ animationDelay: "300ms" }}>
-              <ReconMockup />
-            </div>
-            <div className="enter absolute bottom-0 left-0 w-[300px] -rotate-3" style={{ animationDelay: "450ms" }}>
-              <CloseChecklistMockup />
-            </div>
-          </div>
+          <HeroMockups />
         </div>
       </section>
 
-      {/* Full-width photo band overlapping the hero */}
-      <div className="relative z-10 mx-auto -mt-28 max-w-6xl px-6 md:-mt-40">
-        <div className="enter relative aspect-[16/9] overflow-hidden rounded-3xl shadow-2xl shadow-black/25 md:aspect-[21/9]" style={{ animationDelay: "400ms" }}>
-          <Image
-            src={photos.nycNight.src}
-            alt={photos.nycNight.alt}
-            fill
-            preload
-            placeholder="blur"
-            sizes="(min-width: 1152px) 1104px, 100vw"
-            className="object-cover"
-          />
-          <div className="glass absolute bottom-4 left-4 max-w-xs rounded-2xl p-5 md:bottom-6 md:left-6">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sage">Built for US practices</p>
-            <p className="mt-2 font-display text-lg font-semibold leading-snug text-deep-green">
-              Working to your firm&apos;s calendar, deadlines, and review standards.
-            </p>
-          </div>
+      {/* Photo band: grows from a card to full width as it scrolls in */}
+      <ExpandingBand image={photos.nycNight}>
+        <div className="glass absolute bottom-4 left-4 max-w-xs rounded-2xl p-5 md:bottom-8 md:left-8">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sage">Built for US practices</p>
+          <p className="mt-2 font-display text-lg font-semibold leading-snug text-deep-green">
+            Working to your firm&apos;s calendar, deadlines, and review standards.
+          </p>
         </div>
-      </div>
+      </ExpandingBand>
 
       <BigStats />
 
@@ -123,7 +108,10 @@ export default function Home() {
             </p>
           </Reveal>
           <div className="mt-14">
-            <ServiceRows />
+            <WorkflowPipeline />
+          </div>
+          <div className="mt-20">
+            <ServiceGroups />
           </div>
           <Reveal className="mt-10">
             <ComplianceNote compact />

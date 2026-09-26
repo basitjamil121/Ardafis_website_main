@@ -378,3 +378,10 @@ export const firstThirtyDays = [
     desc: "We walk through the quality bar together, adjust the checklist to your standards, and expand only when you're satisfied.",
   },
 ];
+
+// Inputs for the home-page cost estimator. Per-client range mirrors the
+// "Per-Client Bookkeeping" tier; in-house range mirrors CostComparison.
+export const estimatorRates = {
+  perClientMonthly: [180, 350] as const,
+  inHouseAnnual: [45000, 55000] as const,
+};

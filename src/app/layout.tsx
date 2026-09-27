@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Montserrat } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactBubble from "@/components/ContactBubble";
@@ -99,6 +100,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex-1">{children}</main>
         <Footer />
         <ContactBubble />
+        <Analytics />
       </body>
     </html>
   );

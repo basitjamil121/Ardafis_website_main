@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import Link from "next/link";
 import Aurora from "@/components/Aurora";
@@ -22,9 +22,12 @@ import SplitFeature from "@/components/SplitFeature";
 import { homeFlow } from "@/lib/flows";
 import { photos } from "@/lib/images";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/" },
-};
+export const metadata = pageMetadata({
+  title: "Ardafis Partners | Outsourced Bookkeeping for CPA Firms",
+  description:
+    "Ardafis Partners provides outsourced bookkeeping, payroll, and tax-prep support to US CPA firms and solo practitioners. ACCA-qualified, QuickBooks & Xero Certified, built to scale with busy season.",
+  path: "/",
+});
 
 export default function Home() {
   return (

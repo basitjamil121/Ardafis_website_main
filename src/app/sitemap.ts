@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { services, insights } from "@/lib/site-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ardafispartners.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.ardafispartners.com";
 
   const priorityRoutes: { route: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
     { route: "", priority: 1.0, changeFrequency: "weekly" },

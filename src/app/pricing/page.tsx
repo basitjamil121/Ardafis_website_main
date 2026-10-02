@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/PageHero";
 import { ScopeMockup } from "@/components/ProductMockups";
 import CostComparison from "@/components/CostComparison";
@@ -10,12 +10,12 @@ import Reveal from "@/components/Reveal";
 import { pricingFlow } from "@/lib/flows";
 import { photos } from "@/lib/images";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Pricing",
   description:
     "Transparent per-client, hourly, and per-return pricing for outsourced bookkeeping, payroll, and tax-prep support — no dedicated-staff contracts required.",
-  alternates: { canonical: "/pricing" },
-};
+  path: "/pricing",
+});
 
 const faqs = [
   {

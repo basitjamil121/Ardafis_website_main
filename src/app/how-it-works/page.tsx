@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { CloseChecklistMockup } from "@/components/ProductMockups";
@@ -8,12 +8,12 @@ import CTASection from "@/components/CTASection";
 import SplitFeature from "@/components/SplitFeature";
 import { photos } from "@/lib/images";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "How It Works",
   description:
     "How Ardafis Partners onboards US CPA firms: discovery call, scope & pricing, secure onboarding, and ongoing delivery.",
-  alternates: { canonical: "/how-it-works" },
-};
+  path: "/how-it-works",
+});
 
 export default function HowItWorksPage() {
   return (

@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import PlatformPage from "@/components/PlatformPage";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Xero Outsourcing",
   description:
     "Xero outsourcing for US CPA firms — bookkeeping, multi-currency support, app-ecosystem reconciliation, and migration from a Xero Certified team.",
@@ -10,8 +10,8 @@ export const metadata: Metadata = {
     "Xero bookkeeping service",
     "Xero certified advisor for CPA firms",
   ],
-  alternates: { canonical: "/services/xero-outsourcing" },
-};
+  path: "/services/xero-outsourcing",
+});
 
 const capabilities = [
   "Bank feed setup and reconciliation inside Xero",
@@ -34,6 +34,7 @@ export default function XeroOutsourcingPage() {
         { label: "Entity Setup & Software Migration", href: "/services/entity-setup-software-migration" },
         { label: "Bookkeeping & Cleanup", href: "/services/bookkeeping" },
       ]}
+      canonicalPath="/services/xero-outsourcing"
     />
   );
 }

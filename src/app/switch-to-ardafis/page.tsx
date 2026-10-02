@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/PageHero";
 import ComplianceNote from "@/components/ComplianceNote";
 import CTASection from "@/components/CTASection";
@@ -7,12 +7,12 @@ import Reveal from "@/components/Reveal";
 import { switchFlow } from "@/lib/flows";
 import { photos } from "@/lib/images";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Switch to Ardafis",
   description:
     "How CPA firms move bookkeeping, payroll, or tax-prep work to Ardafis Partners without disrupting existing client relationships.",
-  alternates: { canonical: "/switch-to-ardafis" },
-};
+  path: "/switch-to-ardafis",
+});
 
 const steps = [
   {

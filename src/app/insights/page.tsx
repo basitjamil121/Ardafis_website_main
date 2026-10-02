@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
@@ -6,12 +6,12 @@ import Reveal from "@/components/Reveal";
 import { photos } from "@/lib/images";
 import { insights } from "@/lib/site-data";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Insights",
   description:
     "Practical guidance for CPA firms and solo practitioners on outsourcing, pricing, and software decisions.",
-  alternates: { canonical: "/insights" },
-};
+  path: "/insights",
+});
 
 export default function InsightsPage() {
   return (

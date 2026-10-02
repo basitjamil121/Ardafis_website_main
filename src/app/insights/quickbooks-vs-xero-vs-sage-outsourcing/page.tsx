@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import ArticleLayout from "@/components/ArticleLayout";
 import { insights } from "@/lib/site-data";
 
 const post = insights.find((p) => p.slug === "quickbooks-vs-xero-vs-sage-outsourcing")!;
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: post.title,
   description: post.excerpt,
   keywords: [
@@ -12,8 +12,8 @@ export const metadata: Metadata = {
     "outsourced bookkeeping software",
     "Sage vs QuickBooks outsourcing",
   ],
-  alternates: { canonical: "/insights/quickbooks-vs-xero-vs-sage-outsourcing" },
-};
+  path: "/insights/quickbooks-vs-xero-vs-sage-outsourcing",
+});
 
 export default function Article() {
   return (

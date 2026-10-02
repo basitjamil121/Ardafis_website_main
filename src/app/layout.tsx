@@ -19,7 +19,7 @@ const montserrat = Montserrat({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ardafispartners.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.ardafispartners.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -66,10 +66,19 @@ const jsonLd = {
   "@type": "ProfessionalService",
   name: "Ardafis Partners",
   url: siteUrl,
+  logo: `${siteUrl}/icon`,
+  image: `${siteUrl}/icon`,
+  email: "contact@ardafispartners.com",
   description:
     "Outsourced bookkeeping, payroll, and tax-prep support for US CPA firms and solo practitioners.",
   areaServed: "United States",
   priceRange: "$$",
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "contact@ardafispartners.com",
+    contactType: "customer service",
+    areaServed: "US",
+  },
   knowsAbout: [
     "Bookkeeping",
     "Payroll Processing",

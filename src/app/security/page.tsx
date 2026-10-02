@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
 import ComplianceNote from "@/components/ComplianceNote";
@@ -9,12 +9,12 @@ import SplitFeature from "@/components/SplitFeature";
 import { securityFlow } from "@/lib/flows";
 import { photos } from "@/lib/images";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Security & Confidentiality",
   description:
     "How Ardafis Partners protects client financial data: NDA-backed engagements, scoped access, IRS-compliant disclosure consent, and secure workflow practices.",
-  alternates: { canonical: "/security" },
-};
+  path: "/security",
+});
 
 const practices = [
   {

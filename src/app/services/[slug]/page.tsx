@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 import CTASection from "@/components/CTASection";
 import ComplianceNote from "@/components/ComplianceNote";
 import FlowDiagram from "@/components/FlowDiagram";
@@ -32,12 +33,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = services.find((s) => s.slug === slug);
   if (!service) return {};
-  return {
+  return pageMetadata({
     title: service.title,
     description: service.heroDesc,
     keywords: service.keywords.split(", "),
-    alternates: { canonical: `/services/${service.slug}` },
-  };
+    path: `/services/${service.slug}`,
+  });
 }
 
 export default async function ServiceDetailPage({
@@ -49,7 +50,7 @@ export default async function ServiceDetailPage({
   const service = services.find((s) => s.slug === slug);
   if (!service) notFound();
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ardafispartners.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.ardafispartners.com";
   const url = `${siteUrl}/services/${service.slug}`;
 
   const serviceJsonLd = {

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/PageHero";
 import BigStats from "@/components/BigStats";
 import CredentialBadges from "@/components/CredentialBadges";
@@ -9,12 +9,12 @@ import SplitFeature from "@/components/SplitFeature";
 import { staffingFlow } from "@/lib/flows";
 import { photos } from "@/lib/images";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "About",
   description:
     "Meet the ACCA-qualified team behind Ardafis Partners — outsourced accounting built on US practice experience, ecommerce bookkeeping, and automation.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 
 const team = [
   {
@@ -40,9 +40,33 @@ const initials = (name: string) =>
     .map((part) => part[0])
     .join("");
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.ardafispartners.com";
+
+const teamJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  url: `${siteUrl}/about`,
+  mainEntity: team.map((member) => ({
+    "@type": "Person",
+    name: member.name,
+    jobTitle: member.role,
+    description: member.bio,
+    hasCredential: {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "ACCA",
+      name: "Association of Chartered Certified Accountants (ACCA) qualification",
+    },
+    worksFor: { "@type": "ProfessionalService", name: "Ardafis Partners", url: siteUrl },
+  })),
+};
+
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(teamJsonLd) }}
+      />
       <PageHero
         eyebrow="Who We Are"
         title="An ACCA-qualified team built around US CPA workflows"

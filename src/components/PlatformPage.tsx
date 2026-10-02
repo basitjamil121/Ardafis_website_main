@@ -14,12 +14,45 @@ type PlatformPageProps = {
   intro: string;
   capabilities: string[];
   related: { label: string; href: string }[];
+  canonicalPath: string;
 };
 
 // Shared layout for the QuickBooks / Xero outsourcing landing pages.
-export default function PlatformPage({ platform, icon, title, intro, capabilities, related }: PlatformPageProps) {
+export default function PlatformPage({ platform, icon, title, intro, capabilities, related, canonicalPath }: PlatformPageProps) {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.ardafispartners.com";
+  const url = `${siteUrl}${canonicalPath}`;
+
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: title,
+    description: intro,
+    provider: { "@type": "ProfessionalService", name: "Ardafis Partners" },
+    areaServed: "United States",
+    category: `${platform} Outsourcing`,
+    url,
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${siteUrl}/services` },
+      { "@type": "ListItem", position: 3, name: title, item: url },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <PageHero
         eyebrow="Platform Outsourcing"
         title={title}

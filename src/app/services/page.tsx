@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/PageHero";
 import { ReconMockup } from "@/components/ProductMockups";
 import CTASection from "@/components/CTASection";
@@ -9,17 +9,39 @@ import ServiceGroups from "@/components/ServiceGroups";
 import FlowDiagram from "@/components/FlowDiagram";
 import { homeFlow } from "@/lib/flows";
 import { photos } from "@/lib/images";
+import { services } from "@/lib/site-data";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Services",
   description:
     "Outsourced bookkeeping, payables & receivables, payroll, tax prep, sales tax, 1099/W-2, entity setup, advisory/CFO, and ecommerce accounting for US CPA firms.",
-  alternates: { canonical: "/services" },
+  path: "/services",
+});
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.ardafispartners.com";
+
+const servicesJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: services.map((service, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Service",
+      name: service.title,
+      description: service.heroDesc,
+      url: `${siteUrl}/services/${service.slug}`,
+    },
+  })),
 };
 
 export default function ServicesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
+      />
       <PageHero
         eyebrow="What We Do"
         title="Outsourced accounting services built for US CPA firms"

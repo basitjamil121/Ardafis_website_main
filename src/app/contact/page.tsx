@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
 import FlowDiagram from "@/components/FlowDiagram";
@@ -18,12 +18,12 @@ function LiveStatus() {
   );
 }
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Contact",
   description:
     "Get in touch with Ardafis Partners or request a callback to discuss outsourced bookkeeping, payroll, and tax-prep support for your firm.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

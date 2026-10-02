@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import PlatformPage from "@/components/PlatformPage";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "QuickBooks Outsourcing",
   description:
     "QuickBooks Online and Desktop outsourcing for US CPA firms — bookkeeping, cleanup, payroll, and migration from a QuickBooks Certified team.",
@@ -10,8 +10,8 @@ export const metadata: Metadata = {
     "QuickBooks Online bookkeeping service",
     "QuickBooks certified bookkeeper for CPA firms",
   ],
-  alternates: { canonical: "/services/quickbooks-outsourcing" },
-};
+  path: "/services/quickbooks-outsourcing",
+});
 
 const capabilities = [
   "Bank feed setup, review, and categorization rules",
@@ -34,6 +34,7 @@ export default function QuickBooksOutsourcingPage() {
         { label: "Entity Setup & Software Migration", href: "/services/entity-setup-software-migration" },
         { label: "Payables & Receivables", href: "/services/payables-receivables" },
       ]}
+      canonicalPath="/services/quickbooks-outsourcing"
     />
   );
 }

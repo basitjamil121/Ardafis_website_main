@@ -12,7 +12,7 @@ type ArticleLayoutProps = {
 };
 
 export default function ArticleLayout({ title, date, slug, excerpt, children }: ArticleLayoutProps) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ardafispartners.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.ardafispartners.com";
   const url = `${siteUrl}/insights/${slug}`;
 
   const articleJsonLd = {

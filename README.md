@@ -19,7 +19,7 @@ the contact form works without them (it just logs submissions instead of emailin
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | No | Used for metadata/canonical links. Defaults to `https://ardafispartners.com` if unset. |
+| `NEXT_PUBLIC_SITE_URL` | No | Used for metadata/canonical links. Defaults to `https://www.ardafispartners.com` if unset. Must match whichever host (apex or www) the domain actually serves from, or canonical/sitemap URLs will point at a redirect instead of the live host. |
 | `RESEND_API_KEY` | No | Enables the contact form to actually send email via [Resend](https://resend.com). |
 | `CONTACT_EMAIL_TO` | No | Destination inbox for contact form submissions. |
 | `GOOGLE_SITE_VERIFICATION` | No | Verifies domain ownership in Google Search Console (Settings → Ownership verification → HTML tag → paste just the `content` value). |
@@ -37,7 +37,7 @@ the contact form works without them (it just logs submissions instead of emailin
    - Go to [vercel.com/new](https://vercel.com/new) and sign in with GitHub.
    - Select this repository. Vercel auto-detects Next.js — no build settings need to change.
 3. **Add environment variables in Vercel** (Project Settings → Environment Variables), if you want the contact form to send real emails:
-   - `NEXT_PUBLIC_SITE_URL` → your production domain (e.g. `https://ardafispartners.com`)
+   - `NEXT_PUBLIC_SITE_URL` → your production domain, matching whichever host it actually serves from (e.g. `https://www.ardafispartners.com`)
    - `RESEND_API_KEY` → your Resend API key
    - `CONTACT_EMAIL_TO` → the inbox that should receive inquiries
 4. **Deploy.** Vercel builds and gives you a `*.vercel.app` URL immediately.

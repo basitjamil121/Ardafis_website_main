@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import ArticleLayout from "@/components/ArticleLayout";
 import { insights } from "@/lib/site-data";
 
 const post = insights.find((p) => p.slug === "cost-of-outsourced-bookkeeping-for-cpa-firms")!;
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: post.title,
   description: post.excerpt,
   keywords: [
@@ -12,8 +12,8 @@ export const metadata: Metadata = {
     "outsourced bookkeeping pricing CPA firm",
     "per client bookkeeping pricing",
   ],
-  alternates: { canonical: "/insights/cost-of-outsourced-bookkeeping-for-cpa-firms" },
-};
+  path: "/insights/cost-of-outsourced-bookkeeping-for-cpa-firms",
+});
 
 export default function Article() {
   return (

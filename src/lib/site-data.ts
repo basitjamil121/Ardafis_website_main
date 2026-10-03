@@ -332,6 +332,13 @@ export const insights: Insight[] = [
       "Seasonal staff are expensive to train and hard to retain. Here's how firms cover the busy-season spike without it.",
     date: "2026-09-24",
   },
+  {
+    slug: "ardafis-partners-vs-qx-accounting-services",
+    title: "Ardafis Partners vs. QX Accounting Services",
+    excerpt:
+      "Comparing Ardafis Partners and QX Accounting Services on pricing, team structure, and fit for CPA firms choosing an outsourced bookkeeping provider.",
+    date: "2026-10-03",
+  },
 ];
 
 export const pricingTiers = [

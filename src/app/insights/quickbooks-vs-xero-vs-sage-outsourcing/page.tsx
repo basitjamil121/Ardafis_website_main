@@ -1,4 +1,5 @@
 import { pageMetadata } from "@/lib/metadata";
+import Link from "next/link";
 import ArticleLayout from "@/components/ArticleLayout";
 import { insights } from "@/lib/site-data";
 
@@ -30,12 +31,16 @@ export default function Article() {
       <h2>QuickBooks (Online and Desktop)</h2>
       <p>
         The default for most US small-business clients, and the platform
-        most outsourcing providers are deepest on. QuickBooks Online is
-        generally easier to grant scoped, client-specific access to, which
-        matters for confidentiality — see our{" "}
-        <a href="/security" className="underline">
+        most{" "}
+        <Link href="/services/quickbooks-outsourcing" className="font-semibold text-deep-green underline-offset-4 hover:underline">
+          outsourcing providers
+        </Link>{" "}
+        are deepest on. QuickBooks Online is generally easier to grant
+        scoped, client-specific access to, which matters for
+        confidentiality — see our{" "}
+        <Link href="/security" className="font-semibold text-deep-green underline-offset-4 hover:underline">
           security practices
-        </a>{" "}
+        </Link>{" "}
         for why that matters.
       </p>
 
@@ -44,7 +49,10 @@ export default function Article() {
         Strong for multi-currency and clients with a more modern,
         integration-heavy stack (inventory apps, ecommerce connectors,
         payroll add-ons). If your client base skews toward ecommerce or
-        service businesses that already use a lot of connected apps, Xero
+        service businesses that already use a lot of connected apps,{" "}
+        <Link href="/services/xero-outsourcing" className="font-semibold text-deep-green underline-offset-4 hover:underline">
+          Xero outsourcing
+        </Link>{" "}
         often requires less manual reconciliation work.
       </p>
 
@@ -66,7 +74,13 @@ export default function Article() {
         </strong>
         , not the other way around. Platform migration, if it ever makes
         sense, should be a decision you make deliberately with your client —
-        not a side effect of choosing a bookkeeping partner.
+        not a side effect of choosing a bookkeeping partner. If you&apos;re
+        not sure how deep a provider&apos;s fluency actually goes on your
+        platform,{" "}
+        <Link href="/contact" className="font-semibold text-deep-green underline-offset-4 hover:underline">
+          ask them directly
+        </Link>{" "}
+        before signing anything.
       </p>
     </ArticleLayout>
   );

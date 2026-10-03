@@ -1,4 +1,5 @@
 import { pageMetadata } from "@/lib/metadata";
+import Link from "next/link";
 import ArticleLayout from "@/components/ArticleLayout";
 import { insights } from "@/lib/site-data";
 
@@ -19,17 +20,24 @@ export default function Article() {
   return (
     <ArticleLayout title={post.title} date={post.date} slug={post.slug} excerpt={post.excerpt}>
       <p>
-        Most CPA firms considering outsourced bookkeeping run into the same
-        problem: pricing pages that quote a single flat number, which almost
-        never matches what a real engagement ends up costing. The honest
-        answer is that outsourced bookkeeping is usually priced one of three
-        ways, and which one applies depends on the shape of the work.
+        Most CPA firms considering{" "}
+        <Link href="/services/bookkeeping" className="font-semibold text-deep-green underline-offset-4 hover:underline">
+          outsourced bookkeeping
+        </Link>{" "}
+        run into the same problem: pricing pages that quote a single flat
+        number, which almost never matches what a real engagement ends up
+        costing. The honest answer is that outsourced bookkeeping is usually
+        priced one of three ways, and which one applies depends on the shape
+        of the work.
       </p>
 
       <h2>Per-client monthly pricing</h2>
       <p>
         This is the most common model for ongoing bookkeeping — a flat
-        monthly fee per client file, typically in the $180–$350 range
+        monthly fee per client file,{" "}
+        <Link href="/pricing" className="font-semibold text-deep-green underline-offset-4 hover:underline">
+          typically in the $180–$350 range
+        </Link>{" "}
         depending on transaction volume and reconciliation complexity. It
         works well when the workload per client is predictable month to
         month.
@@ -45,10 +53,13 @@ export default function Article() {
 
       <h2>Per-return pricing during tax season</h2>
       <p>
-        Return preparation support is almost always priced per return rather
-        than hourly, since the value delivered scales with return complexity,
-        not time spent. Simple individual returns typically start around $35,
-        with business returns (1120S, 1065) starting from roughly $120.
+        <Link href="/services/tax-preparation" className="font-semibold text-deep-green underline-offset-4 hover:underline">
+          Return preparation support
+        </Link>{" "}
+        is almost always priced per return rather than hourly, since the
+        value delivered scales with return complexity, not time spent.
+        Simple individual returns typically start around $35, with business
+        returns (1120S, 1065) starting from roughly $120.
       </p>
 
       <h2>The question to ask before comparing quotes</h2>
@@ -59,7 +70,12 @@ export default function Article() {
         contract — and a firm processing hundreds of returns during tax
         season shouldn&apos;t be paying an hourly rate that doesn&apos;t
         scale with volume. The right pricing model follows the work, not the
-        other way around.
+        other way around. If you want a straight answer for your own
+        volume,{" "}
+        <Link href="/contact" className="font-semibold text-deep-green underline-offset-4 hover:underline">
+          a scoping call
+        </Link>{" "}
+        usually settles it faster than comparing rate cards.
       </p>
     </ArticleLayout>
   );

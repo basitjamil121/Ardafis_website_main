@@ -1,4 +1,5 @@
 import { pageMetadata } from "@/lib/metadata";
+import Link from "next/link";
 import ArticleLayout from "@/components/ArticleLayout";
 import { insights } from "@/lib/site-data";
 
@@ -38,11 +39,17 @@ export default function Article() {
 
       <h2>What outsourced overflow support changes</h2>
       <p>
-        Return preparation support that&apos;s billed per return rather than
-        per hour means the cost scales directly with volume — a slow week
-        costs less, a heavy week costs more, but there&apos;s no fixed
-        seasonal salary sitting on the books regardless of how many returns
-        actually come in.
+        <Link href="/services/tax-preparation" className="font-semibold text-deep-green underline-offset-4 hover:underline">
+          Return preparation support
+        </Link>{" "}
+        that&apos;s{" "}
+        <Link href="/pricing" className="font-semibold text-deep-green underline-offset-4 hover:underline">
+          billed per return rather than per hour
+        </Link>{" "}
+        means the cost scales directly with volume — a slow week costs less,
+        a heavy week costs more, but there&apos;s no fixed seasonal salary
+        sitting on the books regardless of how many returns actually come
+        in.
       </p>
 
       <h2>Where the reviewing CPA still fits in</h2>
@@ -60,9 +67,12 @@ export default function Article() {
           The firms that get the most value from overflow support are the
           ones who set it up before the volume spike hits
         </strong>
-        , not mid-March when the backlog is already unmanageable. A short
-        discovery call in the fall or early winter is usually enough to have
-        a workflow ready before the busy season starts.
+        , not mid-March when the backlog is already unmanageable. A short{" "}
+        <Link href="/contact" className="font-semibold text-deep-green underline-offset-4 hover:underline">
+          discovery call
+        </Link>{" "}
+        in the fall or early winter is usually enough to have a workflow
+        ready before the busy season starts.
       </p>
     </ArticleLayout>
   );

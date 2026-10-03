@@ -315,21 +315,21 @@ export const insights: Insight[] = [
     slug: "cost-of-outsourced-bookkeeping-for-cpa-firms",
     title: "What Outsourced Bookkeeping Actually Costs a CPA Firm",
     excerpt:
-      "A breakdown of per-client, hourly, and per-return pricing models — and how to tell which one fits your firm's workload.",
+      "A breakdown of what outsourced bookkeeping actually costs — per-client, hourly, and per-return pricing models, and how to pick the right one.",
     date: "2026-09-24",
   },
   {
     slug: "quickbooks-vs-xero-vs-sage-outsourcing",
-    title: "QuickBooks vs. Xero vs. Sage: What Matters When You're Outsourcing",
+    title: "QuickBooks vs. Xero vs. Sage for Outsourcing",
     excerpt:
-      "The platform your firm already uses usually matters more than which one is 'best' — here's how to think about it.",
+      "Comparing QuickBooks, Xero, and Sage for outsourced bookkeeping — why the platform that matters most is the one your clients already use.",
     date: "2026-09-24",
   },
   {
     slug: "tax-season-overflow-without-hiring",
     title: "Handling Tax Season Overflow Without a Seasonal Hire",
     excerpt:
-      "Seasonal staff are expensive to train and hard to retain. Here's how firms cover the busy-season spike without it.",
+      "Seasonal tax preparers are expensive to train and hard to retain. Here's how CPA firms cover tax-season overflow without a seasonal hire.",
     date: "2026-09-24",
   },
   {
